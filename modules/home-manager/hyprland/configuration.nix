@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: let
-  cfg = config.omarchy;
+cfg = config.omarchy;
 in {
   imports = [
     ./autostart.nix
@@ -12,9 +12,7 @@ in {
     ./looknfeel.nix
     ./windows.nix
   ];
-  wayland.windowManager.hyprland.settings = {
-    # Default applications
-
+  wayland.windowManager.hyprland.settings = cfg.hyprland_assignments // {
     # Environment variables
     env = [
       "GDK_SCALE,2" # Change to 1 if on a 1x display
