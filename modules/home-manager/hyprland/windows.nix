@@ -11,7 +11,7 @@
       # Force chromium into a tile to deal with --app bug
       "tile, class:^(chromium)$"
 
-      # Just dash of opacity
+      # Just dash of transparency 
       "opacity 0.97 0.9, class:.*"
       "opacity 1 0.97, class:^(chromium|google-chrome|google-chrome-unstable)$"
       "opacity 0.97 0.9, initialClass:^(chrome-.*-Default)$ # web apps"

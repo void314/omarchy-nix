@@ -19,29 +19,22 @@
     else hexToRgba theme.foreground "ff";
 in {
   wayland.windowManager.hyprland.settings = {
-    # Refer to https://wiki.hyprland.org/Configuring/Variables/
-
-    # https://wiki.hyprland.org/Configuring/Variables/#general
     general = {
       gaps_in = 5;
       gaps_out = 10;
 
       border_size = 2;
 
-      # https://wiki.hyprland.org/Configuring/Variables/#variable-types for info about colors
       "col.active_border" = activeBorder;
       "col.inactive_border" = hexToRgba theme.surface_variant "aa";
 
-      # Set to true enable resizing windows by clicking and dragging on borders and gaps
       resize_on_border = false;
 
-      # Please see https://wiki.hyprland.org/Configuring/Tearing/ before you turn this on
       allow_tearing = false;
 
       layout = "dwindle";
     };
 
-    # https://wiki.hyprland.org/Configuring/Variables/#decoration
     decoration = {
       rounding = 0;
 
@@ -52,7 +45,6 @@ in {
         color = hexToRgba theme.background "ee";
       };
 
-      # https://wiki.hyprland.org/Configuring/Variables/#blur
       blur = {
         enabled = true;
         size = 3;
@@ -62,12 +54,10 @@ in {
       };
     };
 
-    # https://wiki.hyprland.org/Configuring/Variables/#animations
     animations = {
       enabled = true; # yes, please :)
 
       # Default animations, see https://wiki.hyprland.org/Configuring/Animations/ for more
-
       bezier = [
         "easeOutQuint,0.23,1,0.32,1"
         "easeInOutCubic,0.65,0.05,0.36,1"
@@ -94,29 +84,16 @@ in {
       ];
     };
 
-    # Ref https://wiki.hyprland.org/Configuring/Workspace-Rules/
-    # "Smart gaps" / "No gaps when only"
-    # uncomment all if you wish to use that.
-    # workspace = w[tv1], gapsout:0, gapsin:0
-    # workspace = f[1], gapsout:0, gapsin:0
-    # windowrule = bordersize 0, floating:0, onworkspace:w[tv1]
-    # windowrule = rounding 0, floating:0, onworkspace:w[tv1]
-    # windowrule = bordersize 0, floating:0, onworkspace:f[1]
-    # windowrule = rounding 0, floating:0, onworkspace:f[1]
-
-    # See https://wiki.hyprland.org/Configuring/Dwindle-Layout/ for more
     dwindle = {
-      pseudotile = true; # Master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
-      preserve_split = true; # You probably want this
-      force_split = 2; # Always split on the right
+      pseudotile = true; 
+      preserve_split = true;
+      force_split = 2; 
     };
 
-    # See https://wiki.hyprland.org/Configuring/Master-Layout/ for more
     master = {
       new_status = "master";
     };
 
-    # https://wiki.hyprland.org/Configuring/Variables/#misc
     misc = {
       disable_hyprland_logo = true;
       disable_splash_rendering = true;
