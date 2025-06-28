@@ -2,7 +2,9 @@
   config,
   pkgs,
   ...
-}: {
+}: let
+  cfg = config.omarchy;
+in {
   imports = [
     ./autostart.nix
     ./bindings.nix
@@ -12,13 +14,6 @@
   ];
   wayland.windowManager.hyprland.settings = {
     # Default applications
-    "$terminal" = "alacritty";
-    "$fileManager" = "nautilus --new-window";
-    "$browser" = "chromium --new-window --ozone-platform=wayland";
-    "$music" = "spotify";
-    "$passwordManager" = "1password";
-    "$messenger" = "signal-desktop";
-    "$webapp" = "$browser --app";
 
     # Environment variables
     env = [

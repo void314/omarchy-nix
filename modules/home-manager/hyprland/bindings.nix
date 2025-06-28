@@ -7,7 +7,7 @@
 in {
   wayland.windowManager.hyprland.settings = {
     bind =
-      cfg.quickAppBindings
+      cfg.quick_app_bindings
       ++ [
         # Start default apps
 

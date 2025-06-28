@@ -21,11 +21,24 @@ lib: {
       type = lib.types.attrs;
       default = {};
     };
-    quickAppBindings = lib.mkOption {
+
+    hyprland_assignments = lib.mkOption {
+      type = lib.types.attrs;
+      description = "A list of Hyprland assignments to set up window rules.";
+      default = {
+        "$terminal" = "alacritty";
+        "$fileManager" = "nautilus --new-window";
+        "$browser" = "chromium --new-window --ozone-platform=wayland";
+        "$music" = "spotify";
+        "$passwordManager" = "1password";
+        "$messenger" = "signal-desktop";
+        "$webapp" = "$browser --app";
+      };
+    };
+    quick_app_bindings = lib.mkOption {
       type = lib.types.listOf lib.types.str;
       description = "A list of single keystroke key bindings to launch common apps.";
       default = [
-        
         "SUPER, A, exec, $webapp=https://chatgpt.com"
         "SUPER SHIFT, A, exec, $webapp=https://grok.com"
         "SUPER, C, exec, $webapp=https://app.hey.com/calendar/weeks/"
