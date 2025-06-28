@@ -57,7 +57,9 @@
     # Development tools
     github-desktop
     gh
-    podman-tui
+
+    # Containers
+    docker-compose
     podman-compose
   ];
 

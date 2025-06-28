@@ -9,6 +9,7 @@ in {
     (import ./hyprland.nix inputs)
     (import ./system.nix)
     (import ./1password.nix)
+    (import ./podman.nix)
   ];
 
   environment.systemPackages = packages.systemPackages;
