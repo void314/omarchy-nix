@@ -32,7 +32,7 @@
         };
       };
     };
-    
+
     homeManagerModules = {
       default = {
         config,

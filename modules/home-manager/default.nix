@@ -7,8 +7,9 @@ inputs: {
 in {
   imports = [
     (import ./hyprland.nix inputs)
+    (import ./hyprlock.nix inputs)
     (import ./hyprpaper.nix)
-    # (import ./hyprlock.nix)
+    (import ./hypridle.nix)
     (import ./alacritty.nix)
     (import ./btop.nix)
     (import ./direnv.nix)
