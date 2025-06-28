@@ -1,6 +1,6 @@
 # Omarchy Nix
 
-Omarchy-nix is an opinionated NixOS flake to help you get started as fast as possible with NixOS and Hyprland. It is primarily reimplementation of [DHH's Omarchy](https://github.com/basecamp/omarchy) project - an opinionated Arch/Hyprland setup for modern web development.
+Omarchy-nix is an opinionated NixOS flake to help you get started as fast as possible with NixOS and Hyprland. It is primarily a reimplementation of [DHH's Omarchy](https://github.com/basecamp/omarchy) project - an opinionated Arch/Hyprland setup for modern web development.
 
 
 ## Quick Start
