@@ -13,7 +13,6 @@ in {
       userSettings =
         {
           "workbench.colorTheme" = theme.vscode_theme;
-          # "workbench.colorTheme" = "Everforest Dark";
           "vim.useCtrlKeys" = false;
           "editor.minimap.enabled" = false;
         }

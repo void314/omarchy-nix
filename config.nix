@@ -22,19 +22,6 @@ lib: {
       default = {};
     };
 
-    hyprland_assignments = lib.mkOption {
-      type = lib.types.attrs;
-      description = "A list of Hyprland assignments to set up window rules.";
-      default = {
-        "$terminal" = "alacritty";
-        "$fileManager" = "nautilus --new-window";
-        "$browser" = "chromium --new-window --ozone-platform=wayland";
-        "$music" = "spotify";
-        "$passwordManager" = "1password";
-        "$messenger" = "signal-desktop";
-        "$webapp" = "$browser --app";
-      };
-    };
     quick_app_bindings = lib.mkOption {
       type = lib.types.listOf lib.types.str;
       description = "A list of single keystroke key bindings to launch common apps.";
