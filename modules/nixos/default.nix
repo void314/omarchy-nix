@@ -3,6 +3,7 @@ inputs: {
   pkgs,
   ...
 }: let
+  cfg = config.omarchy;
   packages = import ../packages.nix {inherit pkgs;};
 in {
   imports = [
@@ -12,5 +13,4 @@ in {
     (import ./podman.nix)
   ];
 
-  environment.systemPackages = packages.systemPackages;
 }

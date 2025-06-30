@@ -2,6 +2,7 @@
   # Regular packages
   systemPackages = with pkgs; [
     # Base system tools
+
     git
     vim
     libnotify
@@ -13,6 +14,10 @@
     hyprshot
     hyprpicker
     alejandra
+    pamixer
+    playerctl
+    bibata-cursors
+    gnome-themes-extra
 
     # Shell tools
     fzf

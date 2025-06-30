@@ -1,5 +1,10 @@
 lib: {
   omarchyOptions = {
+    hostname = lib.mkOption {
+      type = lib.types.str;
+      default = "omarchy";
+      description = "Hostname for the system";
+    };
     full_name = lib.mkOption {
       type = lib.types.str;
       description = "Main user's full name";
@@ -21,7 +26,6 @@ lib: {
       type = lib.types.attrs;
       default = {};
     };
-
     quick_app_bindings = lib.mkOption {
       type = lib.types.listOf lib.types.str;
       description = "A list of single keystroke key bindings to launch common apps.";

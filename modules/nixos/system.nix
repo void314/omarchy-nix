@@ -3,17 +3,6 @@
   pkgs,
   ...
 }: {
-  environment.systemPackages = with pkgs; [
-    git
-    vim
-    curl
-    wget
-    pamixer
-    playerctl
-    bibata-cursors
-    gnome-themes-extra
-  ];
-
   security.rtkit.enable = true;
   services.pulseaudio.enable = false;
   services.pipewire = {
@@ -23,10 +12,20 @@
     jack.enable = true;
   };
 
+  # Initial login experience
   services.greetd = {
     enable = true;
     settings.default_session.command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd Hyprland";
   };
 
-  networking.networkmanager.enable = true;
+  # Install packages
+  environment.systemPackages = packages.systemPackages;
+
+  # Networking 
+  services.resolved.enable = true;
+  networking = {
+    hostName = hostConfig.name;
+    networkmanager.enable = true;
+  };
+  # services.samba.enable = true;
 }
