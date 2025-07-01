@@ -2,7 +2,12 @@
   config,
   pkgs,
   ...
-}: {
+}: 
+ let 
+  cfg = config.omarchy;
+  packages = import ../packages.nix { inherit pkgs; };
+in {
+
   security.rtkit.enable = true;
   services.pulseaudio.enable = false;
   services.pipewire = {
@@ -24,8 +29,14 @@
   # Networking 
   services.resolved.enable = true;
   networking = {
-    hostName = hostConfig.name;
+    hostName = cfg.hostname;
     networkmanager.enable = true;
   };
+
+   fonts.packages = with pkgs; [
+      noto-fonts
+      noto-fonts-emoji
+      nerd-fonts.caskaydia-mono
+   ];
   # services.samba.enable = true;
 }

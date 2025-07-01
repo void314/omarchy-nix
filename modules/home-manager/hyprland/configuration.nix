@@ -4,7 +4,7 @@
   lib,
   ...
 }: let
-cfg = config.omarchy;
+  cfg = config.omarchy;
 in {
   imports = [
     ./autostart.nix

@@ -12,5 +12,4 @@ in {
     (import ./1password.nix)
     (import ./podman.nix)
   ];
-
 }
