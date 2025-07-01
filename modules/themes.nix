@@ -113,7 +113,7 @@
     primary_variant = "#7fb4ca";
     secondary = "#957fb8";
     accent = "#938aa9";
-    
+
     # Status colors
     success = "#76946a";
     warning = "#c0a36e";

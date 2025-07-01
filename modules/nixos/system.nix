@@ -2,12 +2,10 @@
   config,
   pkgs,
   ...
-}: 
- let 
+}: let
   cfg = config.omarchy;
-  packages = import ../packages.nix { inherit pkgs; };
+  packages = import ../packages.nix {inherit pkgs;};
 in {
-
   security.rtkit.enable = true;
   services.pulseaudio.enable = false;
   services.pipewire = {
@@ -26,16 +24,18 @@ in {
   # Install packages
   environment.systemPackages = packages.systemPackages;
 
-  # Networking 
+  # Networking
   services.resolved.enable = true;
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
   networking = {
     hostName = cfg.hostname;
     networkmanager.enable = true;
   };
 
-   fonts.packages = with pkgs; [
-      noto-fonts
-      noto-fonts-emoji
-      nerd-fonts.caskaydia-mono
-   ];
+  fonts.packages = with pkgs; [
+    noto-fonts
+    noto-fonts-emoji
+    nerd-fonts.caskaydia-mono
+  ];
 }
