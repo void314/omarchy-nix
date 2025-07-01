@@ -13,6 +13,7 @@
   in "rgba(${cleanHex}${alpha})";
 
   # Special handling for tokyo-night gradient
+  # Probably shouldn't be here.
   activeBorder =
     if cfg.theme == "tokyo-night"
     then "${hexToRgba theme.accent "ee"} ${hexToRgba theme.success "ee"} 45deg"
@@ -57,7 +58,6 @@ in {
     animations = {
       enabled = true; # yes, please :)
 
-      # Default animations, see https://wiki.hyprland.org/Configuring/Animations/ for more
       bezier = [
         "easeOutQuint,0.23,1,0.32,1"
         "easeInOutCubic,0.65,0.05,0.36,1"

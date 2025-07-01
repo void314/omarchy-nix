@@ -9,8 +9,6 @@ in {
     bind =
       cfg.quick_app_bindings
       ++ [
-        # Start default apps
-
         "SUPER, space, exec, wofi --show drun --sort-order=alphabetical"
         "SUPER SHIFT, SPACE, exec, pkill -SIGUSR1 waybar"
         # "SUPER CTRL, SPACE, exec, ~/.local/share/omarchy/bin/swaybg-next"

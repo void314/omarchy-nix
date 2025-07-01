@@ -38,5 +38,4 @@ in {
       noto-fonts-emoji
       nerd-fonts.caskaydia-mono
    ];
-  # services.samba.enable = true;
 }
