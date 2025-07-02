@@ -10,16 +10,16 @@ in {
 
     settings = {
       background-color = "#${config.colorScheme.palette.base00}";
-      text-color = "${config.colorScheme.palette.base05}";
-      border-color = "${config.colorScheme.palette.base04}";
-      progress-color = "${config.colorScheme.palette.base0D}";
+      text-color = "#${config.colorScheme.palette.base05}";
+      border-color = "#${config.colorScheme.palette.base04}";
+      progress-color = "#${config.colorScheme.palette.base0D}";
 
       width = 420;
       height = 110;
       padding = "10";
       margin = "10";
       border-size = 2;
-      border-radius = 8;
+      border-radius = 0;
 
       anchor = "top-right";
       layer = "overlay";
