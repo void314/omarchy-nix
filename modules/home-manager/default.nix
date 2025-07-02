@@ -4,6 +4,9 @@ inputs: {
   ...
 }: let
   packages = import ../packages.nix {inherit pkgs;};
+
+  themes = import ../themes.nix;
+  selectedTheme = themes.${config.omarchy.theme};
 in {
   imports = [
     (import ./hyprland.nix inputs)
@@ -24,6 +27,8 @@ in {
   ];
 
   home.packages = packages.homePackages;
+
+  colorScheme = inputs.nix-colors.colorSchemes.${selectedTheme.base16-theme};
 
   dconf.settings = {
     "org/gnome/desktop/interface" = {

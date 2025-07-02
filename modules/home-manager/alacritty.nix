@@ -2,11 +2,7 @@
   config,
   pkgs,
   ...
-}: let
-  cfg = config.omarchy;
-  themes = import ../themes.nix;
-  theme = themes.${cfg.theme};
-in {
+}: {
   programs.alacritty = {
     enable = true;
     settings = {
@@ -42,28 +38,26 @@ in {
 
       # Colors
       colors = {
-        primary.background = theme.background;
-        primary.foreground = theme.foreground;
+        primary.background = "#${config.colorScheme.palette.base00}";
+        primary.foreground = "#${config.colorScheme.palette.base05}";
 
-        normal.black = theme.black;
-        normal.red = theme.red;
-        normal.green = theme.green;
-        normal.yellow = theme.yellow;
-        normal.blue = theme.blue;
-        normal.magenta = theme.magenta;
-        normal.cyan = theme.cyan;
-        normal.white = theme.white;
+        normal.black = "#${config.colorScheme.palette.base00}"; 
+        normal.red = "#${config.colorScheme.palette.base08}"; 
+        normal.green = "#${config.colorScheme.palette.base0B}"; 
+        normal.yellow = "#${config.colorScheme.palette.base0A}"; 
+        normal.blue = "#${config.colorScheme.palette.base0D}"; 
+        normal.magenta = "#${config.colorScheme.palette.base0E}"; 
+        normal.cyan = "#${config.colorScheme.palette.base0C}"; 
+        normal.white = "#${config.colorScheme.palette.base05}"; 
 
-        bright.black = theme.bright_black;
-        bright.red = theme.bright_red;
-        bright.green = theme.bright_green;
-        bright.yellow = theme.bright_yellow;
-        bright.blue = theme.bright_blue;
-        bright.magenta = theme.bright_magenta;
-        bright.cyan = theme.bright_cyan;
-        bright.white = theme.bright_white;
-
-        selection.background = theme.primary;
+        bright.black = "#${config.colorScheme.palette.base03}"; 
+        bright.red = "#${config.colorScheme.palette.base09}"; 
+        bright.green = "#${config.colorScheme.palette.base01}"; 
+        bright.yellow = "#${config.colorScheme.palette.base02}"; 
+        bright.blue = "#${config.colorScheme.palette.base04}"; 
+        bright.magenta = "#${config.colorScheme.palette.base06}"; 
+        bright.cyan = "#${config.colorScheme.palette.base0F}"; 
+        bright.white = "#${config.colorScheme.palette.base07}"; 
       };
     };
   };

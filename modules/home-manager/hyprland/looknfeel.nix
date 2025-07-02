@@ -3,21 +3,11 @@
   pkgs,
   ...
 }: let
-  cfg = config.omarchy;
-  themes = import ../../themes.nix;
-  theme = themes.${cfg.theme};
-
-  # Convert hex color to rgba format for hyprland
   hexToRgba = hex: alpha: let
-    cleanHex = builtins.substring 1 6 hex; # Remove the # prefix
-  in "rgba(${cleanHex}${alpha})";
+  in "rgba(${hex}${alpha})";
 
-  # Special handling for tokyo-night gradient
-  # Probably shouldn't be here.
-  activeBorder =
-    if cfg.theme == "tokyo-night"
-    then "${hexToRgba theme.accent "ee"} ${hexToRgba theme.success "ee"} 45deg"
-    else hexToRgba theme.foreground "ff";
+  inactiveBorder = hexToRgba config.colorScheme.palette.base09 "aa";
+  activeBorder = hexToRgba config.colorScheme.palette.base0D "aa";
 in {
   wayland.windowManager.hyprland.settings = {
     general = {
@@ -27,7 +17,7 @@ in {
       border_size = 2;
 
       "col.active_border" = activeBorder;
-      "col.inactive_border" = hexToRgba theme.surface_variant "aa";
+      "col.inactive_border" = inactiveBorder;
 
       resize_on_border = false;
 
@@ -43,7 +33,7 @@ in {
         enabled = true;
         range = 2;
         render_power = 3;
-        color = hexToRgba theme.background "ee";
+        # color = hexToRgba config.colorScheme.palette.base00 "ee";
       };
 
       blur = {

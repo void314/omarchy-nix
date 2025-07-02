@@ -2,11 +2,7 @@
   config,
   pkgs,
   ...
-}: let
-  cfg = config.omarchy;
-  themes = import ../themes.nix;
-  theme = themes.${cfg.theme};
-in {
+}: {
   home.file = {
     ".config/waybar/" = {
       source = ../../config/waybar;
@@ -15,8 +11,8 @@ in {
     ".config/waybar/theme.css" = {
       text = ''
         * {
-          color: ${theme.foreground};
-          background-color: ${theme.background};
+          color: #${config.colorScheme.palette.base05};
+          background-color: #${config.colorScheme.palette.base00};
         }
       '';
     };
@@ -75,7 +71,7 @@ in {
           on-click = "alacritty -e btop";
         };
         clock = {
-          format = "{:%A %H:%M}";
+          format = "{:%A %I:%M %p}";
           format-alt = "{:%d %B W%V %Y}";
           tooltip = false;
         };

@@ -12,7 +12,7 @@ in {
     profiles.default = {
       userSettings =
         {
-          "workbench.colorTheme" = theme.vscode_theme;
+          "workbench.colorTheme" = theme.vscode-theme;
           "vim.useCtrlKeys" = false;
           "editor.minimap.enabled" = false;
         }

@@ -4,14 +4,14 @@ inputs: {
   lib,
   ...
 }: let
-  cfg = config.omarchy;
-  themes = import ../themes.nix;
-  theme = themes.${cfg.theme};
 
-  backgroundRgb = "rgb(${inputs.nix-colors.lib.conversions.hexToRGBString ", " (builtins.substring 1 6 theme.background)})";
-  surfaceRgb = "rgb(${inputs.nix-colors.lib.conversions.hexToRGBString ", " (builtins.substring 1 6 theme.surface)})";
-  foregroundRgb = "rgb(${inputs.nix-colors.lib.conversions.hexToRGBString ", " (builtins.substring 1 6 theme.foreground)})";
-  foregroundMutedRgb = "rgb(${inputs.nix-colors.lib.conversions.hexToRGBString ", " (builtins.substring 1 6 theme.foreground_muted)})";
+  palette = config.colorScheme.palette;
+  convert = inputs.nix-colors.lib.conversions.hexToRGBString;
+
+  backgroundRgb = "rgb(${convert ", " palette.base00 })"; 
+  surfaceRgb = "rgb(${convert ", " palette.base02 })"; 
+  foregroundRgb =  "rgb(${convert ", " palette.base0B })"; 
+  foregroundMutedRgb =  "rgb(${convert ", " palette.base04 })";
 in {
   programs.hyprlock = {
     enable = true;

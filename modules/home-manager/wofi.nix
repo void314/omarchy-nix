@@ -2,11 +2,7 @@
   config,
   pkgs,
   ...
-}: let
-  cfg = config.omarchy;
-  themes = import ../themes.nix;
-  theme = themes.${cfg.theme};
-in {
+}: {
   home.file = {
     ".config/wofi/style.css" = {
       text = ''
@@ -18,7 +14,7 @@ in {
         window {
           margin: 0px;
           padding: 20px;
-          background-color: ${theme.background};
+          background-color: #${config.colorScheme.palette.base00}; 
           opacity: 0.95;
         }
 
@@ -26,28 +22,28 @@ in {
           margin: 0;
           padding: 0;
           border: none;
-          background-color: ${theme.background};
+          background-color: #${config.colorScheme.palette.base00}; 
         }
 
         #outer-box {
           margin: 0;
           padding: 20px;
           border: none;
-          background-color: ${theme.background};
+          background-color: #${config.colorScheme.palette.base00}; 
         }
 
         #scroll {
           margin: 0;
           padding: 0;
           border: none;
-          background-color: ${theme.background};
+          background-color: #${config.colorScheme.palette.base00}; 
         }
 
         #input {
           margin: 0;
           padding: 10px;
           border: none;
-          background-color: ${theme.background};
+          background-color: #${config.colorScheme.palette.base00}; 
           color: @text;
         }
 
@@ -60,11 +56,11 @@ in {
         #text {
           margin: 5px;
           border: none;
-          color: ${theme.foreground_muted}
+          color: #${config.colorScheme.palette.base06}; 
         }
 
         #entry {
-          background-color: ${theme.background};
+          background-color: #${config.colorScheme.palette.base00}; 
         }
 
         #entry:selected {
@@ -73,7 +69,7 @@ in {
         }
 
         #entry:selected #text {
-          color: ${theme.primary_variant};
+          color: #${config.colorScheme.palette.base02};
         }
 
         #entry image {

@@ -26,6 +26,7 @@
         imports = [
           (import ./modules/nixos/default.nix inputs)
         ];
+
         options.omarchy = (import ./config.nix lib).omarchyOptions;
         config = {
           nixpkgs.config.allowUnfree = true;
