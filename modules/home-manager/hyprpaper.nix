@@ -14,6 +14,12 @@
     "everforest" = [
       "1-everforest.jpg"
     ];
+    "nord" = [
+      "nord-1.png"
+    ];
+    "gruvbox" = [
+      "gruvbox-1.jpg"
+    ];
   };
 
   selected_wallpaper = builtins.elemAt (wallpapers.${cfg.theme}) 0;
