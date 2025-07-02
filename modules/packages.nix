@@ -2,7 +2,6 @@
   # Regular packages
   systemPackages = with pkgs; [
     # Base system tools
-
     git
     vim
     libnotify
@@ -18,6 +17,7 @@
     playerctl
     bibata-cursors
     gnome-themes-extra
+    blueberry
 
     # Shell tools
     fzf
