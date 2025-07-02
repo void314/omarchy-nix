@@ -4,14 +4,13 @@ inputs: {
   lib,
   ...
 }: let
-
   palette = config.colorScheme.palette;
   convert = inputs.nix-colors.lib.conversions.hexToRGBString;
 
-  backgroundRgb = "rgb(${convert ", " palette.base00 })"; 
-  surfaceRgb = "rgb(${convert ", " palette.base02 })"; 
-  foregroundRgb =  "rgb(${convert ", " palette.base0B })"; 
-  foregroundMutedRgb =  "rgb(${convert ", " palette.base04 })";
+  backgroundRgb = "rgba(${convert ", " palette.base00}, 0.8)";
+  surfaceRgb = "rgb(${convert ", " palette.base02})";
+  foregroundRgb = "rgb(${convert ", " palette.base0B})";
+  foregroundMutedRgb = "rgb(${convert ", " palette.base04})";
 in {
   programs.hyprlock = {
     enable = true;
@@ -25,7 +24,10 @@ in {
       };
       background = {
         monitor = "";
-        color = backgroundRgb;
+        path = "screenshot";
+        # color = backgroundRgb;
+        blur_passes = 3;
+        brightness = 0.6;
       };
 
       input-field = {

@@ -8,7 +8,6 @@
     pavucontrol
     brightnessctl
     ffmpeg
-    alacritty
     nautilus
     hyprshot
     hyprpicker

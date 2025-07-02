@@ -38,6 +38,4 @@ in {
     noto-fonts-emoji
     nerd-fonts.caskaydia-mono
   ];
-
-
 }

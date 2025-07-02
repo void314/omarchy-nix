@@ -20,6 +20,9 @@
     "gruvbox" = [
       "gruvbox-1.jpg"
     ];
+    "gruvbox-light" = [
+      "gruvbox-1.jpg"
+    ];
   };
 
   selected_wallpaper = builtins.elemAt (wallpapers.${cfg.theme}) 0;
@@ -27,7 +30,7 @@
 in {
   home.file = {
     "Pictures/Wallpapers" = {
-      source = ../../config/themes/${cfg.theme}/wallpapers;
+      source = ../../config/themes/wallpapers;
       recursive = true;
     };
   };

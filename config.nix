@@ -14,7 +14,15 @@ lib: {
       description = "Main user's email address";
     };
     theme = lib.mkOption {
-      type = lib.types.enum ["tokyo-night" "kanagawa" "everforest" "catppuccin" "nord" "gruvbox"];
+      type = lib.types.enum [
+        "tokyo-night"
+        "kanagawa"
+        "everforest"
+        "catppuccin"
+        "nord"
+        "gruvbox"
+        "gruvbox-light"
+      ];
       default = "tokyo-night";
       description = "Theme to use for Omarchy configuration";
     };

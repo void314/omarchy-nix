@@ -21,6 +21,7 @@ in {
       extensions = with pkgs.vscode-extensions;
         [
           bbenoist.nix
+          vscodevim.vim
         ]
         ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
           {

@@ -17,9 +17,6 @@
       # Float Steam, fullscreen RetroArch
       "float, class:^(steam)$"
       "fullscreen, class:^(com.libretro.RetroArch)$"
-      
-
-
 
       # Just dash of transparency
       "opacity 0.97 0.9, class:.*"

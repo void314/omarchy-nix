@@ -13,7 +13,7 @@ in {
     (import ./hyprlock.nix inputs)
     (import ./hyprpaper.nix)
     (import ./hypridle.nix)
-    (import ./alacritty.nix)
+    (import ./ghostty.nix)
     (import ./btop.nix)
     (import ./direnv.nix)
     (import ./git.nix)
