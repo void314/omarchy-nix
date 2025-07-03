@@ -25,7 +25,6 @@ in {
       background = {
         monitor = "";
         path = "screenshot";
-        # color = backgroundRgb;
         blur_passes = 3;
         brightness = 0.6;
       };
@@ -37,7 +36,6 @@ in {
         halign = "center";
         valign = "center";
 
-        # inner_color = "rgba(45,53,59,0.8)"; # #2d353b with opacity
         inner_color = surfaceRgb;
         outer_color = foregroundRgb; # #d3c6aa
         outline_thickness = 4;
@@ -55,6 +53,18 @@ in {
         shadow_passes = 0;
         fade_on_empty = false;
       };
+
+      label = {
+        monitor = "";
+        text = "\$FPRINTPROMPT";
+        text_align = "center";
+        color = "rgb(211, 198, 170)";
+        font_size = 24; 
+        font_family = "CaskaydiaMono Nerd Font";
+        position = "0, -100";
+        halign = "center";
+        valign = "center";
+};
     };
   };
 }
