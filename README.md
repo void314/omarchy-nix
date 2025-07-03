@@ -11,7 +11,7 @@ To get started you'll first need to set up a fresh [NixOS](https://nixos.org/) i
 
 
 Once ready, add this flake to your system configuration, you'll also need [home-manager](https://github.com/nix-community/home-manager) as well:
-
+(You can find my personal nix setup [here](https://github.com/henrysipp/nix-setup))
 ```nix
 {
   inputs = {
