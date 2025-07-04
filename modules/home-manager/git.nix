@@ -5,5 +5,8 @@ in {
     enable = true;
     userName = cfg.full_name;
     userEmail = cfg.email_address;
+    extraConfig = {
+      credential.helper = "store";
+    };
   };
 }
