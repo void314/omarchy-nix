@@ -21,6 +21,7 @@ in {
       };
       auth = {
         fingerprint.enabled = true;
+        fingerprint.placeholder_text = "  Enter Password 󰈷 ";
       };
       background = {
         monitor = "";

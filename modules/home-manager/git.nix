@@ -9,4 +9,11 @@ in {
       credential.helper = "store";
     };
   };
+
+  programs.gh = {
+    enable = true;
+    gitCredentialHelper = {
+      enable = true;
+    };
+  };
 }
