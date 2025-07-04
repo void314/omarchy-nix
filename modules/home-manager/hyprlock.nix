@@ -64,7 +64,7 @@ in {
         position = "0, -100";
         halign = "center";
         valign = "center";
-};
+      };
     };
   };
 }
