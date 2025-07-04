@@ -1,10 +1,5 @@
 lib: {
   omarchyOptions = {
-    hostname = lib.mkOption {
-      type = lib.types.str;
-      default = "omarchy";
-      description = "Hostname for the system";
-    };
     full_name = lib.mkOption {
       type = lib.types.str;
       description = "Main user's full name";
@@ -33,6 +28,10 @@ lib: {
     vscode_settings = lib.mkOption {
       type = lib.types.attrs;
       default = {};
+    };
+    monitors = lib.mkOption {
+      type = lib.types.listOf lib.types.str;
+      default = [];
     };
     quick_app_bindings = lib.mkOption {
       type = lib.types.listOf lib.types.str;

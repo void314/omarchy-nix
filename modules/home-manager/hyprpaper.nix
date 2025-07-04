@@ -41,7 +41,7 @@ in {
         selected_wallpaper_path
       ];
       wallpaper = [
-        "eDP-1,${selected_wallpaper_path}"
+        ",${selected_wallpaper_path}"
       ];
     };
   };

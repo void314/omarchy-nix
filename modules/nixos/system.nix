@@ -29,7 +29,6 @@ in {
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
   networking = {
-    hostName = cfg.hostname;
     networkmanager.enable = true;
   };
 
