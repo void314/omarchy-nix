@@ -9,7 +9,7 @@ inputs: {
 
   backgroundRgb = "rgba(${convert ", " palette.base00}, 0.8)";
   surfaceRgb = "rgb(${convert ", " palette.base02})";
-  foregroundRgb = "rgb(${convert ", " palette.base0B})";
+  foregroundRgb = "rgb(${convert ", " palette.base05})";
   foregroundMutedRgb = "rgb(${convert ", " palette.base04})";
 in {
   programs.hyprlock = {
@@ -26,7 +26,7 @@ in {
         monitor = "";
         path = "screenshot";
         blur_passes = 3;
-        brightness = 0.6;
+        brightness = 0.5;
       };
 
       input-field = {
