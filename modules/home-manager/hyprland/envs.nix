@@ -50,7 +50,7 @@ in
       # Use XCompose file
       "XCOMPOSEFILE,~/.XCompose"
       "EDITOR,nvim"
-      "DOCKER_HOST,unix://$XDG_RUNTIME_DIR/podman/podman.sock"
+      # "DOCKER_HOST,unix://$XDG_RUNTIME_DIR/podman/podman.sock"
     ];
 
     xwayland = {
