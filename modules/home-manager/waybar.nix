@@ -1,8 +1,13 @@
-{
+inputs: {
   config,
   pkgs,
   ...
-}: {
+}: 
+let 
+  palette = config.colorScheme.palette;
+  convert = inputs.nix-colors.lib.conversions.hexToRGBString;
+  backgroundRgb = "rgba(${convert ", " palette.base00}, 0.25)";
+in {
   home.file = {
     ".config/waybar/" = {
       source = ../../config/waybar;
@@ -12,7 +17,8 @@
       text = ''
         * {
           color: #${config.colorScheme.palette.base05};
-          background-color: #${config.colorScheme.palette.base00};
+          background-color: ${backgroundRgb};
+          
         }
       '';
     };

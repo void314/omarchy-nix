@@ -20,7 +20,7 @@ in {
     (import ./mako.nix)
     (import ./starship.nix)
     (import ./vscode.nix)
-    (import ./waybar.nix)
+    (import ./waybar.nix inputs)
     (import ./wofi.nix)
     (import ./zoxide.nix)
     (import ./zsh.nix)
@@ -50,6 +50,6 @@ in {
     };
   };
 
-  # TODO: Add an actual nvim config 
+  # TODO: Add an actual nvim config
   programs.neovim.enable = true;
 }
