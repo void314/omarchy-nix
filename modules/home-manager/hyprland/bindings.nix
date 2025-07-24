@@ -46,6 +46,9 @@ in {
         "SUPER, 8, workspace, 8"
         "SUPER, 9, workspace, 9"
         "SUPER, 0, workspace, 10"
+        
+        "SUPER, comma, workspace, -1"
+        "SUPER, period, workspace, +1"
 
         # Move active window to a workspace with mainMod + SHIFT + [0-9]
         "SUPER SHIFT, 1, movetoworkspace, 1"

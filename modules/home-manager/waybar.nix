@@ -5,7 +5,7 @@ inputs: {
 }: let
   palette = config.colorScheme.palette;
   convert = inputs.nix-colors.lib.conversions.hexToRGBString;
-  backgroundRgb = "rgba(${convert ", " palette.base00}, 0)";
+  backgroundRgb = "rgb(${convert ", " palette.base00})";
 in {
   home.file = {
     ".config/waybar/" = {
