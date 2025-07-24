@@ -46,6 +46,11 @@ in {
         # Use XCompose file
         "XCOMPOSEFILE,~/.XCompose"
         "EDITOR,nvim"
+        
+        # GTK theme
+        "GTK_THEME,Adwaita:dark"
+
+        # Podman compatibility. Probably need to add cfg.env?
         # "DOCKER_HOST,unix://$XDG_RUNTIME_DIR/podman/podman.sock"
       ];
 

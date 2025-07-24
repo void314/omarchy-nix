@@ -36,12 +36,6 @@ in {
 
   colorScheme = inputs.nix-colors.colorSchemes.${selectedTheme.base16-theme};
 
-  dconf.settings = {
-    "org/gnome/desktop/interface" = {
-      color-scheme = "prefer-dark";
-    };
-  };
-
   gtk = {
     enable = true;
     theme = {
