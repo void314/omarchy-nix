@@ -4,9 +4,6 @@ config: let
     "tokyo-night" = [
       "1-Pawel-Czerwinski-Abstract-Purple-Blue.jpg"
     ];
-    "tokyo-night-light" = [
-      "tokyo-night-light-1.jpg"
-    ];
     "kanagawa" = [
       "kanagawa-1.png"
     ];

@@ -11,7 +11,6 @@ lib: {
     theme = lib.mkOption {
       type = lib.types.enum [
         "tokyo-night"
-        "tokyo-night-light"
         "kanagawa"
         "everforest"
         "catppuccin"
