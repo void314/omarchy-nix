@@ -1,9 +1,10 @@
 inputs: {
   config,
   pkgs,
+  lib,
   ...
 }: let
-  packages = import ../packages.nix {inherit pkgs;};
+  packages = import ../packages.nix {inherit pkgs lib; exclude_packages = config.omarchy.exclude_packages;};
 
   themes = import ../themes.nix;
   selectedTheme = themes.${config.omarchy.theme};

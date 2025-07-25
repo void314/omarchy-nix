@@ -63,5 +63,10 @@ lib: {
         "SUPER, slash, exec, $passwordManager"
       ];
     };
+    exclude_packages = lib.mkOption {
+      type = lib.types.listOf lib.types.package;
+      default = [];
+      description = "Packages to exclude from the default system packages";
+    };
   };
 }

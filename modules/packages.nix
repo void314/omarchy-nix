@@ -1,26 +1,27 @@
-{pkgs}: {
-  # Regular packages
-  systemPackages = with pkgs; [
-    # Base system tools
-    git
-    vim
-    libnotify
-    pavucontrol
-    brightnessctl
-    ffmpeg
-    nautilus
+{pkgs, lib, exclude_packages ? []}: 
+let
+  # Essential Hyprland packages - cannot be excluded
+  hyprlandPackages = with pkgs; [
     hyprshot
     hyprpicker
     hyprsunset
-    alejandra
+    brightnessctl
     pamixer
     playerctl
     bibata-cursors
     gnome-themes-extra
+    pavucontrol
+  ];
+
+  # Essential system packages - cannot be excluded
+  systemPackages = with pkgs; [
+    git
+    vim
+    libnotify
+    nautilus
+    alejandra
     blueberry
     clipse
-
-    # Shell tools
     fzf
     zoxide
     ripgrep
@@ -30,7 +31,10 @@
     unzip
     wget
     gnumake
+  ];
 
+  # Discretionary packages - can be excluded by user
+  discretionaryPackages = with pkgs; [
     # TUIs
     lazygit
     lazydocker
@@ -42,23 +46,12 @@
     chromium
     obsidian
     vlc
-
-    # Can't find this in nixpkgs!
-    # Might have to make it ourselves
-    # asdcontrol
-
-    # Don't want these right now
-    # obs-studio
-    # kdePackages.kdenLive
-    # pinta
-    # libreoffice
     signal-desktop
 
     # Commercial GUIs
     typora
     dropbox
     spotify
-    # zoom
 
     # Development tools
     github-desktop
@@ -66,8 +59,15 @@
 
     # Containers
     docker-compose
-    # podman-compose
+    ffmpeg
   ];
+
+  # Only allow excluding discretionary packages to prevent breaking the system
+  filteredDiscretionaryPackages = lib.lists.subtractLists exclude_packages discretionaryPackages;
+  allSystemPackages = hyprlandPackages ++ systemPackages ++ filteredDiscretionaryPackages;
+in {
+  # Regular packages
+  systemPackages = allSystemPackages;
 
   homePackages = with pkgs; [
   ];
