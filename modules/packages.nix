@@ -8,7 +8,6 @@ let
     brightnessctl
     pamixer
     playerctl
-    bibata-cursors
     gnome-themes-extra
     pavucontrol
   ];

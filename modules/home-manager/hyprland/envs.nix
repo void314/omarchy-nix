@@ -25,8 +25,8 @@ in {
         "HYPRCURSOR_SIZE,24"
 
         # Cursor theme
-        "XCURSOR_THEME,Bibata-Modern-Classic"
-        "HYPRCURSOR_THEME,Bibata-Modern-Classic"
+        "XCURSOR_THEME,Adwaita"
+        "HYPRCURSOR_THEME,Adwaita"
 
         # Force all apps to use Wayland
         "GDK_BACKEND,wayland"
