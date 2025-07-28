@@ -17,27 +17,24 @@ lib: {
         "nord"
         "gruvbox"
         "gruvbox-light"
-        "custom"
+        "generated_light"
+        "generated_dark"
       ]) lib.types.str;
       default = "tokyo-night";
       description = "Theme to use for Omarchy configuration";
     };
-    customTheme = lib.mkOption {
+    theme_overrides = lib.mkOption {
       type = lib.types.submodule {
         options = {
-          wallpaperPath = lib.mkOption {
-            type = lib.types.path;
+          wallpaper_path = lib.mkOption {
+            type = lib.types.nullOr lib.types.path;
+            default = null;
             description = "Path to the wallpaper image to extract colors from";
-          };
-          variant = lib.mkOption {
-            type = lib.types.enum [ "light" "dark" ];
-            default = "dark";
-            description = "Color scheme variant to extract (light or dark)";
           };
         };
       };
       default = {};
-      description = "Custom theme configuration when theme is set to 'custom'";
+      description = "Theme overrides including wallpaper path for generated themes";
     };
     primary_font = lib.mkOption {
       type = lib.types.str;

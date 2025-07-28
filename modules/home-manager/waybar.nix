@@ -6,6 +6,7 @@ inputs: {
   palette = config.colorScheme.palette;
   convert = inputs.nix-colors.lib.conversions.hexToRGBString;
   backgroundRgb = "rgb(${convert ", " palette.base00})";
+  foregroundRgb = "rgb(${convert ", " palette.base05})";
 in {
   home.file = {
     ".config/waybar/" = {
@@ -16,7 +17,7 @@ in {
       text = ''
         @define-color background ${backgroundRgb};
         * {
-          color: white; 
+          color: ${foregroundRgb}; 
         }
 
         window#waybar {

@@ -69,21 +69,39 @@ Omarchy-nix includes several predefined themes:
 - `gruvbox`
 - `gruvbox-light`
 
-You can also generate a custom theme from any wallpaper image:
+You can also generate themes from wallpaper images using:
+- `generated_light` - generates a light color scheme from wallpaper
+- `generated_dark` - generates a dark color scheme from wallpaper
+
+Generated themes require a wallpaper path to be specified:
 
 ```nix
 {
   omarchy = {
-    theme = "custom";
-    customTheme = {
-      wallpaperPath = ./path/to/your/wallpaper.png;
-      variant = "dark"; # or "light" for light themes
+    theme = "generated_dark"; # or "generated_light"
+    theme_overrides = {
+      wallpaper_path = ./path/to/your/wallpaper.png;
     };
   };
 }
 ```
 
-This will automatically extract colors from your wallpaper and generate a matching color scheme for all Omarchy applications (terminal, editor, launcher, etc.). 
+#### Wallpaper Overrides
+
+Any theme can be customized with a custom wallpaper by specifying `wallpaper_path` in theme_overrides. For predefined themes, this will only change the wallpaper but keep the original color scheme:
+
+```nix
+{
+  omarchy = {
+    theme = "tokyo-night"; # or any other predefined theme
+    theme_overrides = {
+      wallpaper_path = ./path/to/your/wallpaper.png;
+    };
+  };
+}
+```
+
+Generated themes automatically extract colors from the wallpaper and create a matching color scheme for all Omarchy applications (terminal, editor, launcher, etc.). 
 
 ## License
 
