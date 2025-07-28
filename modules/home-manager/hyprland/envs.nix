@@ -48,7 +48,7 @@ in {
         "EDITOR,nvim"
         
         # GTK theme
-        "GTK_THEME,Adwaita:dark"
+        "GTK_THEME,${if cfg.theme == "generated_light" then "Adwaita" else "Adwaita:dark"}"
 
         # Podman compatibility. Probably need to add cfg.env?
         # "DOCKER_HOST,unix://$XDG_RUNTIME_DIR/podman/podman.sock"

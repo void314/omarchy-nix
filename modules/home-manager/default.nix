@@ -54,7 +54,7 @@ in {
   gtk = {
     enable = true;
     theme = {
-      name = "Adwaita-dark";
+      name = if config.omarchy.theme == "generated_light" then "Adwaita" else "Adwaita:dark";
       package = pkgs.gnome-themes-extra;
     };
   };

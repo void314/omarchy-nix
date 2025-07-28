@@ -143,14 +143,14 @@ in {
           format-disabled = "󰂲";
           format-connected = "";
           tooltip-format = "Devices connected: {num_connections}";
-          on-click = "GTK_THEME=Adwaita-dark blueberry";
+          on-click = "blueberry";
         };
         wireplumber = {
           # Changed from "pulseaudio"
           "format" = "";
           format-muted = "󰝟";
           scroll-step = 5;
-          on-click = "GTK_THEME=Adwaita-dark pavucontrol";
+          on-click = "pavucontrol";
           tooltip-format = "Playing at {volume}%";
           on-click-right = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; # Updated command
           max-volume = 150; # Optional: allow volume over 100%
