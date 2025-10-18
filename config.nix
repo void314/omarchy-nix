@@ -36,6 +36,11 @@ lib: {
       default = { };
       description = "Theme overrides including wallpaper path for generated themes";
     };
+    shell = lib.mkOption {
+      type = lib.types.enum [ "fish" "zsh" ];
+      default = "fish";
+      description = "Default shell to use (fish or zsh). Fish is recommended for better experience.";
+    };
     primary_font = lib.mkOption {
       type = lib.types.str;
       default = "Liberation Sans 11";

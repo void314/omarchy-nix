@@ -46,6 +46,8 @@ in
     (import ./waybar.nix inputs)
     (import ./wofi.nix)
     (import ./zoxide.nix)
+    # Import shell modules based on selection
+    (import ./fish.nix)
     (import ./zsh.nix)
   ];
 

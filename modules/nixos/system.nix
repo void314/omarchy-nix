@@ -27,6 +27,13 @@ in
     settings.default_session.command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd Hyprland";
   };
 
+  # Shell configuration
+  programs.fish.enable = cfg.shell == "fish";
+  programs.zsh.enable = cfg.shell == "zsh";
+  
+  # Set default shell for users
+  users.defaultUserShell = if cfg.shell == "fish" then pkgs.fish else pkgs.zsh;
+
   # Install packages
   environment.systemPackages = packages.systemPackages;
   programs.direnv.enable = true;

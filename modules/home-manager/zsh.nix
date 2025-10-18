@@ -1,7 +1,7 @@
-{ ... }:
+{ config, ... }:
 {
   programs.zsh = {
-    enable = true;
+    enable = config.omarchy.shell == "zsh";
     autosuggestion.enable = true;
     zplug = {
       enable = true;
