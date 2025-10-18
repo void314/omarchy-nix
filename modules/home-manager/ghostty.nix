@@ -24,6 +24,9 @@ in
       keybind = [
         "ctrl+k=reset"
       ];
+
+      # Explicitly set shell based on omarchy configuration
+      shell-integration = if cfg.shell == "fish" then "fish" else "zsh";
     };
     themes = {
       omarchy = {

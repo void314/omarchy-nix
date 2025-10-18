@@ -12,9 +12,9 @@ in
   programs.starship = {
     enable = true;
     
-    # Enable starship for both fish and zsh
-    enableFishIntegration = true;
-    enableZshIntegration = true;
+    # Enable starship integration based on selected shell
+    enableFishIntegration = config.omarchy.shell == "fish";
+    enableZshIntegration = config.omarchy.shell == "zsh";
     
     settings = {
       # General configuration
