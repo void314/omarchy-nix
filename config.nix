@@ -20,7 +20,7 @@ lib: {
         "generated_light"
         "generated_dark"
       ]) lib.types.str;
-      default = "tokyo-night";
+      default = "nord";
       description = "Theme to use for Omarchy configuration";
     };
     theme_overrides = lib.mkOption {
