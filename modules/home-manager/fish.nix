@@ -56,7 +56,7 @@
       "la" = "eza -a --icons";
       "ls" = "eza --icons";
       "tree" = "eza --tree --icons";
-      "cat" = "bat --theme=ansi-dark"; # https://github.com/sharkdp/bat
+      "cat" = "bat"; # https://github.com/sharkdp/bat
       "grep" = "rg"; # https://github.com/BurntSushi/ripgrep
       "find" = "fd"; # https://github.com/sharkdp/fd
       "ps" = "procs"; # https://github.com/dalance/procs
