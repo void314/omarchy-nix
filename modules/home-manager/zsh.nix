@@ -5,7 +5,7 @@
     autosuggestion.enable = true;
     
     # Auto-run fastfetch on terminal startup for zsh
-    initExtra = ''
+    initContent = ''
       if [[ $- == *i* ]]; then
         fastfetch
       fi
