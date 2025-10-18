@@ -20,7 +20,6 @@
       sensitivity = 0; # -1.0 - 1.0, 0 means no modification.
 
       touchpad = {
-        scroll_method = "2f";
         natural_scroll = false;
       };
     };
