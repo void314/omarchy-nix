@@ -34,6 +34,7 @@ in
         "$docker_context"
         "$nix_shell"
         "$character"
+        "$sudo"
       ];
       
       # Right side format
@@ -42,7 +43,16 @@ in
       ];
       
       # Add newline between shell prompts
-      add_newline = false;
+      add_newline = true;
+
+      # Command timeout
+      command_timeout = 500;
+
+      # Continuation prompt
+      continuation_prompt = "[∙](bright-black) ";
+      
+      # Scan timeout
+      scan_timeout = 30;
       
       # Character configuration
       character = {
@@ -98,12 +108,12 @@ in
         ahead = "⇡\${count}";
         behind = "⇣\${count}";
         diverged = "⇕⇡\${ahead_count}⇣\${behind_count}";
-        up_to_date = "";
+        up_to_date = "✓";
         untracked = "?\${count}";
         stashed = "$\${count}";
-        modified = "!\${count}";
+        modified = "📝\${count}";
         staged = "+\${count}";
-        renamed = "»\${count}";
+        renamed = "👅\${count}";
         deleted = "✘\${count}";
       };
       
@@ -119,7 +129,11 @@ in
         disabled = false;
         style = "#${palette.base03}";
         format = "[$time]($style)";
-        time_format = "%H:%M";
+        use_12hr = false;
+        utc_time_offset = "local";
+        # time_format = "%R"; # Hour:Minute Format;
+        time_format = "%T"; # Hour:Minute:Seconds Format;
+        time_range = "-";
       };
       
       # Username
@@ -133,9 +147,11 @@ in
       
       # Hostname
       hostname = {
-        ssh_only = true;
+        disabled = false;
+        format = "[$ssh_symbol](blue dimmed bold)[$hostname]($style) ";
+        ssh_only = false;
         style = "#${palette.base0C}";
-        format = "@[$hostname]($style) ";
+        trim_at = ".";
       };
       
       # Programming languages
@@ -148,24 +164,52 @@ in
       };
       
       nodejs = {
-        symbol = " ";
-        style = "#${palette.base0B}";
         format = "[$symbol($version)]($style) ";
-        detect_files = ["package.json" ".node-version" ".nvmrc"];
+        not_capable_style = "bold red";
+        style = "#${palette.base0B}";
+        symbol = " ";
+        version_format = "v$raw";
+        disabled = false;
+        detect_extensions = [
+          "js"
+          "mjs"
+          "cjs"
+          "ts"
+          "mts"
+          "cts"
+        ];
+        detect_files = [
+          "package.json"
+          ".node-version"
+          ".nvmrc"
+        ];
+        detect_folders = ["node_modules"];
       };
       
       rust = {
-        symbol = " ";
-        style = "#${palette.base08}";
         format = "[$symbol($version)]($style) ";
+        version_format = "v$raw";
+        symbol = "🦀 ";
+        style = "#${palette.base08}";
+        disabled = false;
+        detect_extensions = ["rs"];
         detect_files = ["Cargo.toml"];
+        detect_folders = [];
       };
       
       golang = {
         symbol = " ";
         style = "#${palette.base0D}";
         format = "[$symbol($version)]($style) ";
-        detect_files = ["go.mod" "go.sum"];
+        detect_extensions = ["go"];
+        detect_files = [
+          "go.mod"
+          "go.sum"
+          "glide.yaml"
+          "Gopkg.yml"
+          "Gopkg.lock"
+          ".go-version"
+        ];
       };
       
       # Docker
@@ -179,7 +223,7 @@ in
       
       # Nix shell
       nix_shell = {
-        symbol = " ";
+        symbol = " ";
         style = "#${palette.base0E}";
         format = "[$symbol$state( \\($name\\))]($style) ";
         impure_msg = "[impure shell](bold #${palette.base08})";
@@ -225,16 +269,27 @@ in
       
       # Status
       status = {
-        style = "#${palette.base08}";
-        symbol = "✖";
-        success_symbol = "";
-        not_executable_symbol = "🚫";
-        not_found_symbol = "🔍";
-        sigint_symbol = "🧱";
-        signal_symbol = "⚡";
         format = "[$symbol$status]($style) ";
         map_symbol = true;
-        disabled = false;
+        not_executable_symbol = "🚫";
+        not_found_symbol = "🔍";
+        pipestatus = false;
+        pipestatus_format = "[$pipestatus] => [$symbol$common_meaning$signal_name$maybe_int]($style)";
+        pipestatus_separator = "|";
+        recognize_signal_code = true;
+        signal_symbol = "⚡";
+        style = "#${palette.base08}";
+        success_symbol = "🟢 SUCCESS";
+        symbol = "🔴 ";
+        disabled = true;
+      };
+
+      sudo = {
+        format = "[as $symbol]($style)";
+        symbol = "🧙 ";
+        style = "bold blue";
+        allow_windows = false;
+        disabled = true;
       };
     };
   };
