@@ -75,7 +75,7 @@ lib: {
         "SUPER, D, exec, $terminal -e lazydocker"
         "SUPER, G, exec, $messenger"
         "SUPER, O, exec, obsidian -disable-gpu"
-        "SUPER, slash, exec, $passwordManager"
+        # "SUPER, slash, exec, $passwordManager"
       ];
     };
     exclude_packages = lib.mkOption {
