@@ -42,7 +42,7 @@ in
       ];
       
       # Add newline between shell prompts
-      add_newline = true;
+      add_newline = false;
       
       # Character configuration
       character = {
@@ -61,15 +61,25 @@ in
         read_only_style = "#${palette.base08}";
         
         substitutions = {
-          "Documents" = "󰈙 ";
-          "Downloads" = " ";
-          "Music" = " ";
-          "Pictures" = " ";
-          "Videos" = " ";
-          "Desktop" = "󰧨 ";
-          "Projects" = "󰲋 ";
-          "Code" = " ";
-          ".config" = " ";
+          "Documents" = "📑 ";
+          "Документы" = "📑 ";
+          "Downloads" = "⬇️ ";
+          "Загрузки" = "⬇️ ";
+          "Music" = "🎧 ";
+          "Музыка" = "🎧 ";
+          "Pictures" = "🖼️ ";
+          "Изображения" = "🖼️ ";
+          "Videos" = "🎬 ";
+          "Видео" = "🎬 ";
+          "Desktop" = "🏠 ";
+          "'Рабочий стол'" = "🏠 ";
+          "Projects" = "🧩 ";
+          "Шаблоны" = "🧩 ";
+          "Code" = "🚀 ";
+          "Код" = "🚀 ";
+          ".config" = "🛠️ ";
+          "Общедоступные" = "🗺️ ";
+          "Public" = "🗺️ ";
         };
       };
       
@@ -179,7 +189,7 @@ in
       
       # Package version
       package = {
-        symbol = "󰏗 ";
+        symbol = "🔨 ";
         style = "#${palette.base0C}";
         format = "[$symbol$version]($style) ";
         disabled = false;

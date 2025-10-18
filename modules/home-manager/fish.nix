@@ -38,6 +38,11 @@
       # Enable vi mode
       fish_vi_key_bindings
       
+      # Auto-run fastfetch on terminal startup
+      if status is-interactive
+        fastfetch
+      end
+      
       # Custom key bindings
       bind -M insert \cf accept-autosuggestion
       bind -M insert \ce end-of-line
@@ -51,15 +56,16 @@
       "la" = "eza -a --icons";
       "ls" = "eza --icons";
       "tree" = "eza --tree --icons";
-      "cat" = "bat";
-      "grep" = "rg";
-      "find" = "fd";
-      "ps" = "procs";
+      "cat" = "bat --theme=ansi-dark"; # https://github.com/sharkdp/bat
+      "grep" = "rg"; # https://github.com/BurntSushi/ripgrep
+      "find" = "fd"; # https://github.com/sharkdp/fd
+      "ps" = "procs"; # https://github.com/dalance/procs
       "top" = "btop";
       "htop" = "btop";
-      "du" = "dust";
-      "df" = "duf";
-      "ping" = "gping";
+      "du" = "dust"; # https://github.com/bootandy/dust
+      "df" = "duf"; # https://github.com/muesli/duf
+      "ping" = "gping"; # https://github.com/orf/gping
+      "cls" = "clear"; # Clear screen
       
       # Git
       "g" = "git";
@@ -261,5 +267,10 @@
     ripgrep      # Better grep
     fzf          # Fuzzy finder
     zoxide       # Better cd
+    dust         # Better du
+    gping        # Ping with graph
+    procs        # Better ps
+    duf          # Better df
+    fastfetch    # System info display
   ];
 }
