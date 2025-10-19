@@ -20,6 +20,7 @@ in
       # General configuration - updated format to match style.md example
       format = lib.concatStrings [
         "$cmd_duration"
+        "$sudo"
         "[](#${palette.base0E})"
         "$os"
         "$username"
@@ -52,11 +53,10 @@ in
 
       right_format = lib.concatStrings [
         "$time"
-        # "$sudo"
       ];
       
       # Add newline between shell prompts
-      add_newline = false;
+      add_newline = true;
 
       # Command timeout
       command_timeout = 500;
@@ -382,8 +382,8 @@ in
       };
       
       sudo = {
-        style = "fg:#${palette.base05} bg:#${palette.base02}";
-        symbol = "🧙 ";
+        style = "#${palette.base05}";
+        symbol = "🧙";
         format = "[ $symbol ]($style)";
         disabled = false;
         allow_windows = false;
