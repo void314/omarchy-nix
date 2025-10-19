@@ -9,11 +9,6 @@ let
   cfg = config.omarchy.zen-browser;
 in
 {
-  # Import Zen Browser Home Manager module
-  imports = [
-    inputs.zen-browser.homeModules.default
-  ];
-
   options.omarchy.zen-browser = {
     enable = lib.mkEnableOption "Zen Browser";
     
@@ -49,8 +44,11 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    # Install Zen Browser package
+    home.packages = [ cfg.package ];
 
-    programs.zen-browser = {
+    # Configure Zen Browser through Firefox policies
+    programs.firefox = {
       enable = true;
       package = cfg.package;
 
@@ -160,7 +158,7 @@ in
         name = "Zen Browser";
         genericName = "Web Browser";
         comment = "Browse the World Wide Web";
-        exec = "zen %U";
+        exec = "${cfg.package}/bin/zen %U";
         icon = "zen-browser";
         terminal = false;
         categories = [ "Network" "WebBrowser" ];
@@ -184,11 +182,11 @@ in
         actions = {
           new-window = {
             name = "New Window";
-            exec = "zen --new-window %U";
+            exec = "${cfg.package}/bin/zen --new-window %U";
           };
           new-private-window = {
             name = "New Private Window";
-            exec = "zen --private-window %U";
+            exec = "${cfg.package}/bin/zen --private-window %U";
           };
         };
       };
