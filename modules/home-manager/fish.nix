@@ -47,6 +47,11 @@
       bind -M insert \cf accept-autosuggestion
       bind -M insert \ce end-of-line
       bind -M insert \ca beginning-of-line
+
+      # Custom prompt
+      set -e fish_prompt
+      set -e _done_prompt
+      set -e _fzf_fish_prompt
     '';
     
     # Aliases
