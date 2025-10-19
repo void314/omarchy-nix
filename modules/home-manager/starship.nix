@@ -22,10 +22,13 @@ in
         "[](#${palette.base0E})"
         "$os"
         "$username"
+        "$character"
+        "$cmd_duration"
         "[](bg:#${palette.base08} fg:#${palette.base0E})"
         "$directory"
         "[](fg:#${palette.base08} bg:#${palette.base09})"
         "$git_branch"
+        "$git_state"
         "$git_status"
         "[](fg:#${palette.base09} bg:#${palette.base0D})"
         "$c"
@@ -42,15 +45,16 @@ in
         "$scala"
         "$python"
         "$nix_shell"
-        "[](fg:#${palette.base0D} bg:#${palette.base0C})"
+        "[](fg:#${palette.base0D} bg:#${palette.base0C})"
         "$docker_context"
-        "[](fg:#${palette.base0C} bg:#${palette.base0A})"
-        "$time"
-        "[ ](fg:#${palette.base0A})"
+        "[ ](fg:#${palette.base0A})"
       ];
       
-      # Right side format - simplified
-      right_format = "";
+      # Right side format
+      right_format = lib.concatStrings [
+        "$time"
+        # "$sudo"
+      ];
       
       # Add newline between shell prompts
       add_newline = false;
