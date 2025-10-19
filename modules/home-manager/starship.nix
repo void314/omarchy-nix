@@ -77,7 +77,7 @@ in
       # Directory configuration
       directory = {
         style = "bold fg:#${palette.base06} bg:#${palette.base0D}";
-        format = "[$path]($style)[$read_only]($read_only_style) ";
+        format = "[$path]($style)[$read_only]($read_only_style)";
         truncation_length = 3;
         truncation_symbol = "…/";
         read_only = " 󰌾";
