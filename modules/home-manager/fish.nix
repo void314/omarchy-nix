@@ -47,21 +47,6 @@
       bind -M insert \cf accept-autosuggestion
       bind -M insert \ce end-of-line
       bind -M insert \ca beginning-of-line
-
-      # Custom one-line fish prompt (forces override)
-      set -e fish_prompt
-      # set -e _done_prompt
-      # set -e _fzf_fish_prompt
-
-      function fish_prompt
-        set_color cyan
-        printf '%s ' (prompt_hostname)
-        set_color blue
-        printf '%s ' (prompt_pwd)
-        set_color green
-        echo -n '❯ '
-        set_color normal
-      end
     '';
     
     # Aliases
@@ -132,18 +117,6 @@
     
     # Functions
     functions = {
-      fish_prompt = {
-        description = "Custom single-line Fish prompt";
-        body = ''
-          set_color cyan
-          printf '%s ' (prompt_hostname)
-          set_color blue
-          printf '%s ' (prompt_pwd)
-          set_color green
-          echo -n '❯ '
-          set_color normal
-        '';
-      };
       # Create directory and cd into it
       mkcd = {
         body = ''

@@ -19,31 +19,36 @@ in
     settings = {
       # General configuration
       format = lib.concatStrings [
+        "[](#9A348E)"
+        "$os"
         "$username"
-        "$hostname"
+        "$character"
+        "$cmd_duration"
+        "[](bg:#DA627D fg:#9A348E)"
         "$directory"
+        "[](fg:#DA627D bg:#FCA17D)"
         "$git_branch"
         "$git_state"
         "$git_status"
-        "$cmd_duration"
-        "$line_break"
+        "[](fg:#FCA17D bg:#86BBD8)"
+        "$golang"
         "$python"
         "$nodejs"
         "$rust"
-        "$golang"
-        "$docker_context"
         "$nix_shell"
-        "$character"
-        "$sudo"
+        "[](fg:#86BBD8 bg:#06969A)"
+        "$docker_context"
+        "[ ](fg:#33658A)"
       ];
       
       # Right side format
       right_format = lib.concatStrings [
         "$time"
+        "$sudo"
       ];
       
       # Add newline between shell prompts
-      add_newline = true;
+      add_newline = false;
 
       # Command timeout
       command_timeout = 500;
@@ -71,25 +76,25 @@ in
         read_only_style = "#${palette.base08}";
         
         substitutions = {
-          "Documents" = "📑 ";
-          "Документы" = "📑 ";
-          "Downloads" = "⬇️ ";
-          "Загрузки" = "⬇️ ";
-          "Music" = "🎧 ";
-          "Музыка" = "🎧 ";
-          "Pictures" = "🖼️ ";
-          "Изображения" = "🖼️ ";
-          "Videos" = "🎬 ";
-          "Видео" = "🎬 ";
-          "Desktop" = "🏠 ";
-          "Рабочий стол" = "🏠 ";
-          "Projects" = "🧩 ";
-          "Шаблоны" = "🧩 ";
-          "Code" = "🚀 ";
-          "Код" = "🚀 ";
-          ".config" = "🛠️ ";
-          "Общедоступные" = "🗺️ ";
-          "Public" = "🗺️ ";
+          "Documents" = "󰈙 ";
+          "Документы" = "󰈙 ";
+          "Downloads" = " ";
+          "Загрузки" = " ";
+          "Music" = " ";
+          "Музыка" = " ";
+          "Pictures" = " ";
+          "Изображения" = " ";
+          "Videos" = "󰕧 ";
+          "Видео" = "󰕧 ";
+          "Desktop" = "󰟀 ";
+          "Рабочий стол" = "󰟀 ";
+          "Projects" = "󰆧 ";
+          "Шаблоны" = "󰆧 ";
+          "Code" = "󰙯 ";
+          "Код" = "󰙯 ";
+          ".config" = "󰒓 ";
+          "Общедоступные" = "󰖟 ";
+          "Public" = "󰖟 ";
         };
       };
       
@@ -111,9 +116,9 @@ in
         up_to_date = "✓";
         untracked = "?\${count}";
         stashed = "$\${count}";
-        modified = "📝\${count}";
+        modified = "󰈙\${count}";
         staged = "+\${count}";
-        renamed = "👅\${count}";
+        renamed = "󰛿\${count}";
         deleted = "✘\${count}";
       };
       
@@ -134,6 +139,13 @@ in
         # time_format = "%R"; # Hour:Minute Format;
         time_format = "%T"; # Hour:Minute:Seconds Format;
         time_range = "-";
+      };
+
+      # An alternative to the username module which displays a symbol that
+      # represents the current operating system
+      os = {
+        style = "#${palette.base03}";
+        disabled = true;
       };
       
       # Username
@@ -223,7 +235,7 @@ in
       
       # Nix shell
       nix_shell = {
-        symbol = " ";
+        symbol = "❄️ ";
         style = "#${palette.base0E}";
         format = "[$symbol$state( \\($name\\))]($style) ";
         impure_msg = "[impure shell](bold #${palette.base08})";
