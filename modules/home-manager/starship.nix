@@ -17,20 +17,22 @@ in
     enableZshIntegration = config.omarchy.shell == "zsh";
     
     settings = {
+      style = "fg:#${palette.base05} bg:#${palette.base00}";
+      
       # General configuration - updated format to match style.md example
       format = lib.concatStrings [
+        "$cmd_duration"
         "[](#${palette.base0E})"
         "$os"
         "$username"
-        "$character"
-        "$cmd_duration"
-        "[](bg:#${palette.base08} fg:#${palette.base0E})"
+        # "$character"
+        "[](bg:#${palette.base09} fg:#${palette.base0E})"
         "$directory"
-        "[](fg:#${palette.base08} bg:#${palette.base09})"
+        "[](fg:#${palette.base09} bg:#${palette.base0D})"
         "$git_branch"
         "$git_state"
         "$git_status"
-        "[](fg:#${palette.base09} bg:#${palette.base0D})"
+        "[](fg:#${palette.base0D} bg:#${palette.base0B})"
         "$c"
         "$elixir"
         "$elm"
@@ -47,7 +49,7 @@ in
         "$nix_shell"
         "[](fg:#${palette.base0D} bg:#${palette.base0C})"
         "$docker_context"
-        "[ ](fg:#${palette.base0A})"
+        "[ ](fg:#${palette.base0B})"
       ];
       
       # Right side format
@@ -118,17 +120,21 @@ in
       git_status = {
         style = "fg:#${palette.base08} bg:#${palette.base09}";
         format = "([$all_status$ahead_behind]($style))";
-        conflicted = "=";
+        conflicted = "󰞇";
         ahead = "⇡\${count}";
         behind = "⇣\${count}";
         diverged = "⇕⇡\${ahead_count}⇣\${behind_count}";
         up_to_date = "✓";
         untracked = "?\${count}";
-        stashed = "$\${count}";
+        stashed = "󰆼\${count}";
         modified = "󰈙\${count}";
-        staged = "+\${count}";
-        renamed = "󰛿\${count}";
+        staged = "\${count}";
+        renamed = "󰑕\${count}";
         deleted = "✘\${count}";
+      };
+
+      git_state = {
+        format = "([$state( $progress_current/$progress_total)]($style))";
       };
       
       # Command duration
@@ -141,7 +147,7 @@ in
       # Time
       time = {
         disabled = false;
-        style = "fg:#${palette.base03} bg:#${palette.base09}";
+        style = "#${palette.base03}";
         format = "[$time]($style)";
         use_12hr = false;
         utc_time_offset = "local";
@@ -163,7 +169,6 @@ in
         style_root = "bold #${palette.base08}";
         format = "[$user]($style)";
         disabled = false;
-        show_always = false;
       };
       
       # Hostname
@@ -275,7 +280,7 @@ in
       };
       
       python = {
-        symbol = " ";
+        symbol = "󰌠 ";
         style = "fg:#${palette.base0D} bg:#${palette.base09}";
         format = "[ $symbol ($version) ]($style)";
         detect_extensions = ["py"];
@@ -286,7 +291,7 @@ in
         format = "[ $symbol ($version) ]($style)";
         not_capable_style = "bold red";
         style = "fg:#${palette.base0D} bg:#${palette.base09}";
-        symbol = " ";
+        symbol = "󰎙 ";
         version_format = "v$raw";
         disabled = false;
         detect_extensions = [
@@ -308,7 +313,7 @@ in
       rust = {
         format = "[ $symbol ($version) ]($style)";
         version_format = "v$raw";
-        symbol = " ";
+        symbol = "󱘗 ";
         style = "fg:#${palette.base0D} bg:#${palette.base09}";
         disabled = false;
         detect_extensions = ["rs"];
@@ -317,7 +322,7 @@ in
       };
       
       golang = {
-        symbol = " ";
+        symbol = "󰟓 ";
         style = "fg:#${palette.base0D} bg:#${palette.base09}";
         format = "[ $symbol ($version) ]($style)";
         detect_extensions = ["go"];
@@ -333,7 +338,7 @@ in
       
       # Docker
       docker_context = {
-        symbol = " ";
+        symbol = "󰡨 ";
         style = "fg:#${palette.base0D} bg:#${palette.base09}";
         format = "[ $symbol $context ]($style)";
         only_with_files = true;
@@ -366,7 +371,7 @@ in
         disabled = false;
         threshold = -1;
         symbol = "🐏 ";
-        style = "fg:#${palette.base0D} bg:#${palette.base08}";
+        style = "fg:#${palette.base05} bg:#${palette.base02}";
         format = "[ $symbol $ram( | $swap) ]($style)";
       };
       
@@ -410,7 +415,7 @@ in
       };
       
       status = {
-        style = "fg:#${palette.base0D} bg:#${palette.base08}";
+        style = "fg:#${palette.base05} bg:#${palette.base02}";
         symbol = "🔴 ";
         success_symbol = "🟢 SUCCESS";
         not_executable_symbol = "🚫 ";
@@ -426,7 +431,7 @@ in
       };
       
       sudo = {
-        style = "fg:#${palette.base0D} bg:#${palette.base08}";
+        style = "fg:#${palette.base05} bg:#${palette.base02}";
         symbol = "🧙 ";
         format = "[ $symbol ]($style)";
         disabled = false;
