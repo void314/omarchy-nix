@@ -45,6 +45,7 @@ in
     (import ./vscode.nix)
     (import ./waybar.nix inputs)
     (import ./wofi.nix)
+    (import ./zen-browser.nix inputs)
     (import ./zoxide.nix)
     # Import shell modules based on selection
     (import ./fish.nix)
