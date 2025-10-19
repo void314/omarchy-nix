@@ -17,35 +17,40 @@ in
     enableZshIntegration = config.omarchy.shell == "zsh";
     
     settings = {
-      # General configuration
+      # General configuration - updated format to match style.md example
       format = lib.concatStrings [
-        "[](#9A348E)"
+        "[](#${palette.base0E})"
         "$os"
         "$username"
-        "$character"
-        "$cmd_duration"
-        "[](bg:#DA627D fg:#9A348E)"
+        "[](bg:#${palette.base08} fg:#${palette.base0E})"
         "$directory"
-        "[](fg:#DA627D bg:#FCA17D)"
+        "[](fg:#${palette.base08} bg:#${palette.base09})"
         "$git_branch"
-        "$git_state"
         "$git_status"
-        "[](fg:#FCA17D bg:#86BBD8)"
+        "[](fg:#${palette.base09} bg:#${palette.base0D})"
+        "$c"
+        "$elixir"
+        "$elm"
         "$golang"
-        "$python"
+        "$gradle"
+        "$haskell"
+        "$java"
+        "$julia"
         "$nodejs"
+        "$nim"
         "$rust"
+        "$scala"
+        "$python"
         "$nix_shell"
-        "[](fg:#86BBD8 bg:#06969A)"
+        "[](fg:#${palette.base0D} bg:#${palette.base0C})"
         "$docker_context"
-        "[ ](fg:#33658A)"
+        "[](fg:#${palette.base0C} bg:#${palette.base0A})"
+        "$time"
+        "[ ](fg:#${palette.base0A})"
       ];
       
-      # Right side format
-      right_format = lib.concatStrings [
-        "$time"
-        "$sudo"
-      ];
+      # Right side format - simplified
+      right_format = "";
       
       # Add newline between shell prompts
       add_newline = false;
@@ -166,20 +171,118 @@ in
         trim_at = ".";
       };
       
-      # Programming languages
+      # Programming languages - updated to match style.md example
+      c = {
+        symbol = " ";
+        style = "bg:#${palette.base0D}";
+        format = "[ $symbol ($version) ]($style)";
+        disabled = false;
+        detect_extensions = ["c" "h"];
+        detect_files = [];
+        detect_folders = [];
+      };
+
+      cpp = {
+        symbol = " ";
+        style = "bg:#${palette.base0D}";
+        format = "[ $symbol ($version) ]($style)";
+        disabled = false;
+        detect_extensions = ["cpp" "cxx" "cc" "hpp" "hxx"];
+        detect_files = [];
+        detect_folders = [];
+      };
+
+      elixir = {
+        symbol = " ";
+        style = "bg:#${palette.base0D}";
+        format = "[ $symbol ($version) ]($style)";
+        disabled = false;
+        detect_extensions = [];
+        detect_files = ["mix.exs"];
+        detect_folders = [];
+      };
+
+      elm = {
+        symbol = " ";
+        style = "bg:#${palette.base0D}";
+        format = "[ $symbol ($version) ]($style)";
+        disabled = false;
+        detect_extensions = ["elm"];
+        detect_files = ["elm.json" "elm-package.json" ".elm-version"];
+        detect_folders = ["elm-stuff"];
+      };
+
+      gradle = {
+        style = "bg:#${palette.base0D}";
+        format = "[ $symbol ($version) ]($style)";
+        disabled = false;
+        detect_files = ["build.gradle" "build.gradle.kts"];
+        detect_folders = [];
+      };
+
+      haskell = {
+        symbol = " ";
+        style = "bg:#${palette.base0D}";
+        format = "[ $symbol ($version) ]($style)";
+        disabled = false;
+        detect_extensions = ["hs" "cabal" "hs-boot"];
+        detect_files = ["stack.yaml" "cabal.project"];
+        detect_folders = [];
+      };
+
+      java = {
+        symbol = " ";
+        style = "bg:#${palette.base0D}";
+        format = "[ $symbol ($version) ]($style)";
+        disabled = false;
+        detect_extensions = ["java" "class" "jar" "gradle" "clj" "cljc"];
+        detect_files = ["pom.xml" "build.gradle.kts" "build.sbt" ".java-version" "deps.edn" "project.clj" "build.boot"];
+        detect_folders = [];
+      };
+
+      julia = {
+        symbol = " ";
+        style = "bg:#${palette.base0D}";
+        format = "[ $symbol ($version) ]($style)";
+        disabled = false;
+        detect_extensions = ["jl"];
+        detect_files = ["Project.toml" "Manifest.toml"];
+        detect_folders = [];
+      };
+
+      nim = {
+        symbol = "󰆥 ";
+        style = "bg:#${palette.base0D}";
+        format = "[ $symbol ($version) ]($style)";
+        disabled = false;
+        detect_extensions = ["nim" "nims" "nimble"];
+        detect_files = ["nim.cfg"];
+        detect_folders = [];
+      };
+
+      scala = {
+        symbol = " ";
+        style = "bg:#${palette.base0D}";
+        format = "[ $symbol ($version) ]($style)";
+        disabled = false;
+        detect_extensions = ["scala" "sbt"];
+        detect_files = ["build.sbt" ".scalaenv" ".sbtenv" "build.sc"];
+        detect_folders = [".metals"];
+      };
+      
       python = {
         symbol = " ";
-        style = "#${palette.base0A}";
-        format = "[$symbol($version)]($style) ";
+        style = "bg:#${palette.base0D}";
+        format = "[ $symbol ($version) ]($style)";
         detect_extensions = ["py"];
         detect_files = [".python-version" "Pipfile" "requirements.txt" "pyproject.toml" "tox.ini"];
       };
       
       nodejs = {
-        format = "[$symbol($version)]($style) ";
+        format = "[ $symbol ($version) ]($style)";
         not_capable_style = "bold red";
-        style = "#${palette.base0B}";
-        symbol = " ";
+        style = "bg:#${palette.base0D}";
+        symbol = " ";
         version_format = "v$raw";
         disabled = false;
         detect_extensions = [
@@ -199,10 +302,10 @@ in
       };
       
       rust = {
-        format = "[$symbol($version)]($style) ";
+        format = "[ $symbol ($version) ]($style)";
         version_format = "v$raw";
-        symbol = "🦀 ";
-        style = "#${palette.base08}";
+        symbol = " ";
+        style = "bg:#${palette.base0D}";
         disabled = false;
         detect_extensions = ["rs"];
         detect_files = ["Cargo.toml"];
@@ -211,8 +314,8 @@ in
       
       golang = {
         symbol = " ";
-        style = "#${palette.base0D}";
-        format = "[$symbol($version)]($style) ";
+        style = "bg:#${palette.base0D}";
+        format = "[ $symbol ($version) ]($style)";
         detect_extensions = ["go"];
         detect_files = [
           "go.mod"
@@ -227,81 +330,103 @@ in
       # Docker
       docker_context = {
         symbol = " ";
-        style = "#${palette.base0D}";
-        format = "[$symbol$context]($style) ";
+        style = "bg:#${palette.base0D}";
+        format = "[ $symbol $context ]($style)";
         only_with_files = true;
-        detect_files = ["docker-compose.yml" "docker-compose.yaml" "Dockerfile"];
-      };
-      
-      # Nix shell
-      nix_shell = {
-        symbol = "❄️ ";
-        style = "#${palette.base0E}";
-        format = "[$symbol$state( \\($name\\))]($style) ";
-        impure_msg = "[impure shell](bold #${palette.base08})";
-        pure_msg = "[pure shell](bold #${palette.base0B})";
-        unknown_msg = "[unknown shell](bold #${palette.base0A})";
-      };
-      
-      # Package version
-      package = {
-        symbol = "🔨 ";
-        style = "#${palette.base0C}";
-        format = "[$symbol$version]($style) ";
         disabled = false;
+        detect_extensions = [];
+        detect_files = ["docker-compose.yml" "docker-compose.yaml" "Dockerfile"];
+        detect_folders = [];
       };
       
-      # Memory usage
+      nix_shell = {
+        disabled = false;
+        impure_msg = "[impure shell](bold red)";
+        pure_msg = "[pure shell](bold green)";
+        unknown_msg = "[unknown shell](bold yellow)";
+        format = "[ $state( \\($name\\)) ]($style)";
+        style = "bg:#${palette.base0D}";
+        heuristic = false;
+      };
+      
+      package = {
+        format = "[ $symbol $version ]($style)";
+        style = "bg:#${palette.base0D}";
+        symbol = "📦 ";
+        disabled = false;
+        display_private = false;
+        version_format = "v$raw";
+      };
+      
       memory_usage = {
-        disabled = true;
-        threshold = 70;
-        style = "bold #${palette.base08}";
-        format = "[$symbol\${ram}]($style) ";
+        disabled = false;
+        threshold = -1;
+        symbol = "🐏 ";
+        style = "bg:#${palette.base08}";
+        format = "[ $symbol $ram( | $swap) ]($style)";
       };
       
-      # Battery
       battery = {
-        full_symbol = " ";
-        charging_symbol = " ";
-        discharging_symbol = " ";
-        unknown_symbol = " ";
-        empty_symbol = " ";
-        
+        full_symbol = "🔋 ";
+        charging_symbol = "⚡️ ";
+        discharging_symbol = "💀 ";
+        unknown_symbol = "❓ ";
+        empty_symbol = "❗ ";
+        disabled = false;
+        format = "[ $symbol$percentage ]($style)";
         display = [
           {
             threshold = 10;
-            style = "bold #${palette.base08}";
+            style = "bg:#${palette.base08}";
+            charging_symbol = "⚡️ ";
+            discharging_symbol = "💀 ";
           }
           {
             threshold = 30;
-            style = "bold #${palette.base0A}";
+            style = "bg:#${palette.base09}";
+            charging_symbol = "⚡️ ";
+            discharging_symbol = "💦 ";
+          }
+          {
+            threshold = 50;
+            style = "bg:#${palette.base0A}";
+            charging_symbol = "⚡️ ";
+          }
+          {
+            threshold = 80;
+            style = "bg:#${palette.base0B}";
+            charging_symbol = "⚡️ ";
+          }
+          {
+            threshold = 100;
+            style = "bg:#${palette.base0B}";
+            charging_symbol = "⚡️ ";
           }
         ];
       };
       
-      # Status
       status = {
-        format = "[$symbol$status]($style) ";
-        map_symbol = true;
-        not_executable_symbol = "🚫";
-        not_found_symbol = "🔍";
-        pipestatus = false;
-        pipestatus_format = "[$pipestatus] => [$symbol$common_meaning$signal_name$maybe_int]($style)";
-        pipestatus_separator = "|";
-        recognize_signal_code = true;
-        signal_symbol = "⚡";
-        style = "#${palette.base08}";
-        success_symbol = "🟢 SUCCESS";
+        style = "bg:#${palette.base08}";
         symbol = "🔴 ";
-        disabled = true;
+        success_symbol = "🟢 SUCCESS";
+        not_executable_symbol = "🚫 ";
+        not_found_symbol = "🔍 ";
+        sigint_symbol = "🧱 ";
+        signal_symbol = "⚡ ";
+        format = "[ $symbol$common_meaning$signal_name$maybe_int ]($style)";
+        map_symbol = true;
+        disabled = false;
+        pipestatus = false;
+        pipestatus_separator = "|";
+        pipestatus_format = "\\[$pipestatus\\] => [$symbol$common_meaning$signal_name$maybe_int]($style)";
       };
-
+      
       sudo = {
-        format = "[as $symbol]($style)";
+        style = "bg:#${palette.base08}";
         symbol = "🧙 ";
-        style = "bold blue";
+        format = "[ $symbol ]($style)";
+        disabled = false;
         allow_windows = false;
-        disabled = true;
       };
     };
   };
