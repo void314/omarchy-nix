@@ -84,72 +84,72 @@ in
             AcceptThirdParty = "never";
             Locked = true;
           };
+
+          # Browser preferences
+          Preferences = lib.mkMerge [
+            (lib.mapAttrs (_: value: {
+              Value = value;
+              Status = "locked";
+            }) {
+              # Performance and UI preferences
+              "browser.tabs.warnOnClose" = false;
+              "browser.tabs.warnOnCloseOtherTabs" = false;
+              "browser.sessionstore.warnOnQuit" = false;
+              "browser.aboutConfig.showWarning" = false;
+              
+              # Privacy preferences
+              "privacy.donottrackheader.enabled" = true;
+              "privacy.trackingprotection.enabled" = true;
+              "privacy.trackingprotection.socialtracking.enabled" = true;
+              "privacy.partition.network_state" = true;
+              
+              # Security preferences
+              "security.tls.insecure_fallback_hosts" = "";
+              "security.tls.unrestricted_rc4_fallback" = false;
+              "security.ssl.require_safe_negotiation" = true;
+              
+              # Disable unnecessary features
+              "extensions.pocket.enabled" = false;
+              "browser.newtabpage.activity-stream.feeds.telemetry" = false;
+              "browser.newtabpage.activity-stream.telemetry" = false;
+              "browser.ping-centre.telemetry" = false;
+              "toolkit.telemetry.enabled" = false;
+              "toolkit.telemetry.unified" = false;
+              "toolkit.telemetry.server" = "";
+              
+              # Zen-specific preferences
+              "zen.tabs.vertical.right-side" = false;
+              "zen.view.compact" = false;
+              "zen.theme.accent-color" = "auto";
+            })
+            (lib.mapAttrs (_: value: {
+              Value = value;
+              Status = "locked";
+            }) cfg.preferences)
+          ];
+
+          # Extensions configuration
+          ExtensionSettings = lib.mkMerge [
+            {
+              # uBlock Origin
+              "uBlock0@raymondhill.net" = {
+                install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
+                installation_mode = "force_installed";
+              };
+              
+              # Privacy Badger
+              "jid1-MnnxcxisBPnSXQ@jetpack" = {
+                install_url = "https://addons.mozilla.org/firefox/downloads/latest/privacy-badger17/latest.xpi";
+                installation_mode = "force_installed";
+              };
+            }
+            (lib.mapAttrs (_: config: {
+              install_url = "https://addons.mozilla.org/firefox/downloads/latest/${config.id}/latest.xpi";
+              installation_mode = config.mode or "force_installed";
+            }) cfg.extensions)
+          ];
         }
         cfg.policies
-      ];
-
-      # Browser preferences
-      policies.Preferences = lib.mkMerge [
-        (lib.mapAttrs (_: value: {
-          Value = value;
-          Status = "locked";
-        }) {
-          # Performance and UI preferences
-          "browser.tabs.warnOnClose" = false;
-          "browser.tabs.warnOnCloseOtherTabs" = false;
-          "browser.sessionstore.warnOnQuit" = false;
-          "browser.aboutConfig.showWarning" = false;
-          
-          # Privacy preferences
-          "privacy.donottrackheader.enabled" = true;
-          "privacy.trackingprotection.enabled" = true;
-          "privacy.trackingprotection.socialtracking.enabled" = true;
-          "privacy.partition.network_state" = true;
-          
-          # Security preferences
-          "security.tls.insecure_fallback_hosts" = "";
-          "security.tls.unrestricted_rc4_fallback" = false;
-          "security.ssl.require_safe_negotiation" = true;
-          
-          # Disable unnecessary features
-          "extensions.pocket.enabled" = false;
-          "browser.newtabpage.activity-stream.feeds.telemetry" = false;
-          "browser.newtabpage.activity-stream.telemetry" = false;
-          "browser.ping-centre.telemetry" = false;
-          "toolkit.telemetry.enabled" = false;
-          "toolkit.telemetry.unified" = false;
-          "toolkit.telemetry.server" = "";
-          
-          # Zen-specific preferences
-          "zen.tabs.vertical.right-side" = false;
-          "zen.view.compact" = false;
-          "zen.theme.accent-color" = "auto";
-        })
-        (lib.mapAttrs (_: value: {
-          Value = value;
-          Status = "locked";
-        }) cfg.preferences)
-      ];
-
-      # Extensions configuration
-      policies.ExtensionSettings = lib.mkMerge [
-        {
-          # uBlock Origin
-          "uBlock0@raymondhill.net" = {
-            install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
-            installation_mode = "force_installed";
-          };
-          
-          # Privacy Badger
-          "jid1-MnnxcxisBPnSXQ@jetpack" = {
-            install_url = "https://addons.mozilla.org/firefox/downloads/latest/privacy-badger17/latest.xpi";
-            installation_mode = "force_installed";
-          };
-        }
-        (lib.mapAttrs (_: config: {
-          install_url = "https://addons.mozilla.org/firefox/downloads/latest/${config.id}/latest.xpi";
-          installation_mode = config.mode or "force_installed";
-        }) cfg.extensions)
       ];
     };
 
