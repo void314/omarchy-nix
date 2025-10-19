@@ -143,7 +143,7 @@ in
       # Time
       time = {
         disabled = false;
-        style = "fg:#${palette.base04}";
+        style = "#${palette.base04}";
         format = "[$time]($style)";
         use_12hr = false;
         utc_time_offset = "local";
