@@ -81,7 +81,7 @@ in
         truncation_length = 3;
         truncation_symbol = "…/";
         read_only = " 󰌾";
-        read_only_style = "#${palette.base08}";
+        read_only_style = "fg:#${palette.base08} bg:#${palette.base0D}";
         
         substitutions = {
           "Documents" = "󰈙 ";
