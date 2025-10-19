@@ -136,7 +136,7 @@ in
       # Command duration
       cmd_duration = {
         min_time = 2000;
-        style = "fg:#${palette.base06} bg:#${palette.base0E}";
+        style = "#${palette.base04}";
         format = "[$duration]($style) ";
       };
       
