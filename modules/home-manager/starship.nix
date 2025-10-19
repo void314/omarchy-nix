@@ -24,13 +24,13 @@ in
         "$os"
         "$username"
         # "$character"
-        "[](bg:#${palette.base09} fg:#${palette.base0E})"
+        "[](fg:#${palette.base0E} bg:#${palette.base0D})"
         "$directory"
-        "[](fg:#${palette.base09} bg:#${palette.base0D})"
+        "[](fg:#${palette.base0D} bg:#${palette.base0C})"
         "$git_branch"
         "$git_state"
         "$git_status"
-        "[](fg:#${palette.base0D} bg:#${palette.base0B})"
+        "[](fg:#${palette.base0C} bg:#${palette.base0B})"
         "$c"
         "$elixir"
         "$elm"
@@ -45,12 +45,11 @@ in
         "$scala"
         "$python"
         "$nix_shell"
-        "[](fg:#${palette.base0D} bg:#${palette.base0C})"
+        "[](fg:#${palette.base0B} bg:#${palette.base02})"
         "$docker_context"
-        "[ ](fg:#${palette.base0B})"
+        "[](fg:#${palette.base02})"
       ];
-      
-      # Right side format
+
       right_format = lib.concatStrings [
         "$time"
         # "$sudo"
@@ -77,7 +76,7 @@ in
       
       # Directory configuration
       directory = {
-        style = "bold fg:#${palette.base0D} bg:#${palette.base09}";
+        style = "bold fg:#${palette.base06} bg:#${palette.base0D}";
         format = "[$path]($style)[$read_only]($read_only_style) ";
         truncation_length = 3;
         truncation_symbol = "…/";
@@ -106,17 +105,16 @@ in
           "Public" = "󰖟 ";
         };
       };
-      
-      # Git branch
+
+      # Git
       git_branch = {
-        symbol = " ";
-        style = "bold fg:#${palette.base0E} bg:#${palette.base09}";
-        format = "[$symbol$branch(:$remote_branch)]($style) ";
+        symbol = " ";
+        style = "bold fg:#${palette.base06} bg:#${palette.base0C}";
+        format = "[$symbol$branch(:$remote_branch)]($style)";
       };
-      
-      # Git status
+
       git_status = {
-        style = "fg:#${palette.base08} bg:#${palette.base09}";
+        style = "fg:#${palette.base06} bg:#${palette.base0C}";
         format = "([$all_status$ahead_behind]($style))";
         conflicted = "󰞇";
         ahead = "⇡\${count}";
@@ -125,9 +123,9 @@ in
         up_to_date = "✓";
         untracked = "?\${count}";
         stashed = "󰆼\${count}";
-        modified = "󰈙\${count}";
+        modified = "\${count}";
         staged = "\${count}";
-        renamed = "󰑕\${count}";
+        renamed = "󰏫\${count}";
         deleted = "✘\${count}";
       };
 
@@ -138,14 +136,14 @@ in
       # Command duration
       cmd_duration = {
         min_time = 2000;
-        style = "fg:#${palette.base0A} bg:#${palette.base09}";
+        style = "fg:#${palette.base06} bg:#${palette.base0E}";
         format = "[$duration]($style) ";
       };
       
       # Time
       time = {
         disabled = false;
-        style = "#${palette.base03}";
+        style = "fg:#${palette.base04}";
         format = "[$time]($style)";
         use_12hr = false;
         utc_time_offset = "local";
@@ -163,8 +161,8 @@ in
       
       # Username
       username = {
-        style_user = "fg:#${palette.base0C} bg:#${palette.base09}";
-        style_root = "bold #${palette.base08}";
+        style_user = "fg:#${palette.base06} bg:#${palette.base0E}";
+        style_root = "bold fg:#${palette.base08} bg:#${palette.base0E}";
         format = "[$user]($style)";
         disabled = false;
       };
@@ -177,7 +175,7 @@ in
         style = "fg:#${palette.base0C} bg:#${palette.base09}";
         trim_at = ".";
       };
-      
+
       # Programming languages - updated to match style.md example
       c = {
         symbol = " ";
@@ -333,11 +331,17 @@ in
           ".go-version"
         ];
       };
-      
-      # Docker
+
+      nix_shell = {
+        disabled = false;
+        format = "[ $symbol$state( \\($name\\)) ]($style)";
+        symbol = " ";
+        style = "fg:#${palette.base06} bg:#${palette.base0B}";
+      };
+
       docker_context = {
         symbol = "󰡨 ";
-        style = "fg:#${palette.base0D} bg:#${palette.base09}";
+        style = "fg:#${palette.base06} bg:#${palette.base0B}";
         format = "[ $symbol $context ]($style)";
         only_with_files = true;
         disabled = false;
@@ -345,17 +349,6 @@ in
         detect_files = ["docker-compose.yml" "docker-compose.yaml" "Dockerfile"];
         detect_folders = [];
       };
-      
-      nix_shell = {
-        disabled = false;
-        impure_msg = "[impure shell](bold red)";
-        pure_msg = "[pure shell](bold green)";
-        unknown_msg = "[unknown shell](bold yellow)";
-        format = "[ $state( \\($name\\)) ]($style)";
-        style = "fg:#${palette.base0D} bg:#${palette.base09}";
-        heuristic = false;
-      };
-      
       package = {
         format = "[ $symbol $version ]($style)";
         style = "fg:#${palette.base0D} bg:#${palette.base09}";
@@ -364,63 +357,23 @@ in
         display_private = false;
         version_format = "v$raw";
       };
-      
+
       memory_usage = {
         disabled = false;
-        threshold = -1;
         symbol = "🐏 ";
         style = "fg:#${palette.base05} bg:#${palette.base02}";
-        format = "[ $symbol $ram( | $swap) ]($style)";
+        format = "[ $symbol $ram ]($style)";
       };
-      
-      battery = {
-        full_symbol = "🔋 ";
-        charging_symbol = "⚡️ ";
-        discharging_symbol = "💀 ";
-        unknown_symbol = "❓ ";
-        empty_symbol = "❗ ";
-        disabled = false;
-        format = "[ $symbol$percentage ]($style)";
-        display = [
-          {
-            threshold = 10;
-            style = "bg:#${palette.base08}";
-            charging_symbol = "⚡️ ";
-            discharging_symbol = "💀 ";
-          }
-          {
-            threshold = 30;
-            style = "bg:#${palette.base09}";
-            charging_symbol = "⚡️ ";
-            discharging_symbol = "💦 ";
-          }
-          {
-            threshold = 50;
-            style = "bg:#${palette.base0A}";
-            charging_symbol = "⚡️ ";
-          }
-          {
-            threshold = 80;
-            style = "bg:#${palette.base0B}";
-            charging_symbol = "⚡️ ";
-          }
-          {
-            threshold = 100;
-            style = "bg:#${palette.base0B}";
-            charging_symbol = "⚡️ ";
-          }
-        ];
-      };
-      
+
       status = {
         style = "fg:#${palette.base05} bg:#${palette.base02}";
         symbol = "🔴 ";
-        success_symbol = "🟢 SUCCESS";
+        success_symbol = "🟢 ";
         not_executable_symbol = "🚫 ";
         not_found_symbol = "🔍 ";
         sigint_symbol = "🧱 ";
         signal_symbol = "⚡ ";
-        format = "[ $symbol$common_meaning$signal_name$maybe_int ]($style)";
+        format = "[ $symbol$common_meaning ]($style)";
         map_symbol = true;
         disabled = false;
         pipestatus = false;
