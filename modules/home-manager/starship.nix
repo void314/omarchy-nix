@@ -16,9 +16,7 @@ in
     enableFishIntegration = config.omarchy.shell == "fish";
     enableZshIntegration = config.omarchy.shell == "zsh";
     
-    settings = {
-      style = "fg:#${palette.base05} bg:#${palette.base00}";
-      
+    settings = {      
       # General configuration - updated format to match style.md example
       format = lib.concatStrings [
         "$cmd_duration"
