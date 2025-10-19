@@ -117,6 +117,18 @@
     
     # Functions
     functions = {
+      fish_prompt = {
+        description = "Custom single-line Fish prompt";
+        body = ''
+          set_color cyan
+          printf '%s ' (prompt_hostname)
+          set_color blue
+          printf '%s ' (prompt_pwd)
+          set_color green
+          echo -n '❯ '
+          set_color normal
+        '';
+      };
       # Create directory and cd into it
       mkcd = {
         body = ''
