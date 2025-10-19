@@ -9,6 +9,11 @@ let
   cfg = config.omarchy.zen-browser;
 in
 {
+  # Import Zen Browser Home Manager module
+  imports = [
+    inputs.zen-browser.homeModules.default
+  ];
+
   options.omarchy.zen-browser = {
     enable = lib.mkEnableOption "Zen Browser";
     
@@ -44,10 +49,6 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    # Import Zen Browser Home Manager module
-    imports = [
-      inputs.zen-browser.homeModules.default
-    ];
 
     programs.zen-browser = {
       enable = true;
