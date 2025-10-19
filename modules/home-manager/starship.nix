@@ -77,7 +77,7 @@ in
       
       # Directory configuration
       directory = {
-        style = "bold #${palette.base0D}";
+        style = "bold fg:#${palette.base0D} bg:#${palette.base09}";
         format = "[$path]($style)[$read_only]($read_only_style) ";
         truncation_length = 3;
         truncation_symbol = "…/";
@@ -110,13 +110,13 @@ in
       # Git branch
       git_branch = {
         symbol = " ";
-        style = "#${palette.base0E}";
+        style = "bold fg:#${palette.base0E} bg:#${palette.base09}";
         format = "[$symbol$branch(:$remote_branch)]($style) ";
       };
       
       # Git status
       git_status = {
-        style = "#${palette.base08}";
+        style = "fg:#${palette.base08} bg:#${palette.base09}";
         format = "([$all_status$ahead_behind]($style))";
         conflicted = "=";
         ahead = "⇡\${count}";
@@ -134,14 +134,14 @@ in
       # Command duration
       cmd_duration = {
         min_time = 2000;
-        style = "#${palette.base0A}";
+        style = "fg:#${palette.base0A} bg:#${palette.base09}";
         format = "[$duration]($style) ";
       };
       
       # Time
       time = {
         disabled = false;
-        style = "#${palette.base03}";
+        style = "fg:#${palette.base03} bg:#${palette.base09}";
         format = "[$time]($style)";
         use_12hr = false;
         utc_time_offset = "local";
@@ -153,13 +153,13 @@ in
       # An alternative to the username module which displays a symbol that
       # represents the current operating system
       os = {
-        style = "#${palette.base03}";
+        style = "fg:#${palette.base03} bg:#${palette.base09}";
         disabled = true;
       };
       
       # Username
       username = {
-        style_user = "#${palette.base0C}";
+        style_user = "fg:#${palette.base0C} bg:#${palette.base09}";
         style_root = "bold #${palette.base08}";
         format = "[$user]($style)";
         disabled = false;
@@ -171,14 +171,14 @@ in
         disabled = false;
         format = "[$ssh_symbol](blue dimmed bold)[$hostname]($style) ";
         ssh_only = false;
-        style = "#${palette.base0C}";
+        style = "fg:#${palette.base0C} bg:#${palette.base09}";
         trim_at = ".";
       };
       
       # Programming languages - updated to match style.md example
       c = {
         symbol = " ";
-        style = "bg:#${palette.base0D}";
+        style = "fg:#${palette.base0D} bg:#${palette.base09}";
         format = "[ $symbol ($version) ]($style)";
         disabled = false;
         detect_extensions = ["c" "h"];
@@ -188,7 +188,7 @@ in
 
       cpp = {
         symbol = " ";
-        style = "bg:#${palette.base0D}";
+        style = "fg:#${palette.base0D} bg:#${palette.base09}";
         format = "[ $symbol ($version) ]($style)";
         disabled = false;
         detect_extensions = ["cpp" "cxx" "cc" "hpp" "hxx"];
@@ -198,7 +198,7 @@ in
 
       elixir = {
         symbol = " ";
-        style = "bg:#${palette.base0D}";
+        style = "fg:#${palette.base0D} bg:#${palette.base09}";
         format = "[ $symbol ($version) ]($style)";
         disabled = false;
         detect_extensions = [];
@@ -208,7 +208,7 @@ in
 
       elm = {
         symbol = " ";
-        style = "bg:#${palette.base0D}";
+        style = "fg:#${palette.base0D} bg:#${palette.base09}";
         format = "[ $symbol ($version) ]($style)";
         disabled = false;
         detect_extensions = ["elm"];
@@ -217,7 +217,7 @@ in
       };
 
       gradle = {
-        style = "bg:#${palette.base0D}";
+        style = "fg:#${palette.base0D} bg:#${palette.base09}";
         format = "[ $symbol ($version) ]($style)";
         disabled = false;
         detect_files = ["build.gradle" "build.gradle.kts"];
@@ -226,7 +226,7 @@ in
 
       haskell = {
         symbol = " ";
-        style = "bg:#${palette.base0D}";
+        style = "fg:#${palette.base0D} bg:#${palette.base09}";
         format = "[ $symbol ($version) ]($style)";
         disabled = false;
         detect_extensions = ["hs" "cabal" "hs-boot"];
@@ -236,7 +236,7 @@ in
 
       java = {
         symbol = " ";
-        style = "bg:#${palette.base0D}";
+        style = "fg:#${palette.base0D} bg:#${palette.base09}";
         format = "[ $symbol ($version) ]($style)";
         disabled = false;
         detect_extensions = ["java" "class" "jar" "gradle" "clj" "cljc"];
@@ -246,7 +246,7 @@ in
 
       julia = {
         symbol = " ";
-        style = "bg:#${palette.base0D}";
+        style = "fg:#${palette.base0D} bg:#${palette.base09}";
         format = "[ $symbol ($version) ]($style)";
         disabled = false;
         detect_extensions = ["jl"];
@@ -256,7 +256,7 @@ in
 
       nim = {
         symbol = "󰆥 ";
-        style = "bg:#${palette.base0D}";
+        style = "fg:#${palette.base0D} bg:#${palette.base09}";
         format = "[ $symbol ($version) ]($style)";
         disabled = false;
         detect_extensions = ["nim" "nims" "nimble"];
@@ -266,7 +266,7 @@ in
 
       scala = {
         symbol = " ";
-        style = "bg:#${palette.base0D}";
+        style = "fg:#${palette.base0D} bg:#${palette.base09}";
         format = "[ $symbol ($version) ]($style)";
         disabled = false;
         detect_extensions = ["scala" "sbt"];
@@ -276,7 +276,7 @@ in
       
       python = {
         symbol = " ";
-        style = "bg:#${palette.base0D}";
+        style = "fg:#${palette.base0D} bg:#${palette.base09}";
         format = "[ $symbol ($version) ]($style)";
         detect_extensions = ["py"];
         detect_files = [".python-version" "Pipfile" "requirements.txt" "pyproject.toml" "tox.ini"];
@@ -285,7 +285,7 @@ in
       nodejs = {
         format = "[ $symbol ($version) ]($style)";
         not_capable_style = "bold red";
-        style = "bg:#${palette.base0D}";
+        style = "fg:#${palette.base0D} bg:#${palette.base09}";
         symbol = " ";
         version_format = "v$raw";
         disabled = false;
@@ -309,7 +309,7 @@ in
         format = "[ $symbol ($version) ]($style)";
         version_format = "v$raw";
         symbol = " ";
-        style = "bg:#${palette.base0D}";
+        style = "fg:#${palette.base0D} bg:#${palette.base09}";
         disabled = false;
         detect_extensions = ["rs"];
         detect_files = ["Cargo.toml"];
@@ -318,7 +318,7 @@ in
       
       golang = {
         symbol = " ";
-        style = "bg:#${palette.base0D}";
+        style = "fg:#${palette.base0D} bg:#${palette.base09}";
         format = "[ $symbol ($version) ]($style)";
         detect_extensions = ["go"];
         detect_files = [
@@ -334,7 +334,7 @@ in
       # Docker
       docker_context = {
         symbol = " ";
-        style = "bg:#${palette.base0D}";
+        style = "fg:#${palette.base0D} bg:#${palette.base09}";
         format = "[ $symbol $context ]($style)";
         only_with_files = true;
         disabled = false;
@@ -349,13 +349,13 @@ in
         pure_msg = "[pure shell](bold green)";
         unknown_msg = "[unknown shell](bold yellow)";
         format = "[ $state( \\($name\\)) ]($style)";
-        style = "bg:#${palette.base0D}";
+        style = "fg:#${palette.base0D} bg:#${palette.base09}";
         heuristic = false;
       };
       
       package = {
         format = "[ $symbol $version ]($style)";
-        style = "bg:#${palette.base0D}";
+        style = "fg:#${palette.base0D} bg:#${palette.base09}";
         symbol = "📦 ";
         disabled = false;
         display_private = false;
@@ -366,7 +366,7 @@ in
         disabled = false;
         threshold = -1;
         symbol = "🐏 ";
-        style = "bg:#${palette.base08}";
+        style = "fg:#${palette.base0D} bg:#${palette.base08}";
         format = "[ $symbol $ram( | $swap) ]($style)";
       };
       
@@ -410,7 +410,7 @@ in
       };
       
       status = {
-        style = "bg:#${palette.base08}";
+        style = "fg:#${palette.base0D} bg:#${palette.base08}";
         symbol = "🔴 ";
         success_symbol = "🟢 SUCCESS";
         not_executable_symbol = "🚫 ";
@@ -426,7 +426,7 @@ in
       };
       
       sudo = {
-        style = "bg:#${palette.base08}";
+        style = "fg:#${palette.base0D} bg:#${palette.base08}";
         symbol = "🧙 ";
         format = "[ $symbol ]($style)";
         disabled = false;
